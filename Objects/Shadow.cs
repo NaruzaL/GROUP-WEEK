@@ -8,12 +8,16 @@ namespace PersonaFive.Objects
   {
     private string _name;
     private string _type;
+    private string _intro;
+    private string _img;
     private int _id;
 
-    public Shadow(string Name, string Type, int Id = 0)
+    public Shadow(string Name, string Type, string Intro, string Img, int Id = 0)
     {
       _name = Name;
       _type = Type;
+      _intro = Intro;
+      _img = Img;
       _id = Id;
     }
 
@@ -24,6 +28,14 @@ namespace PersonaFive.Objects
     public string GetShadowType()
     {
       return _type;
+    }
+    public string GetIntro()
+    {
+      return _intro;
+    }
+    public string GetImg()
+    {
+      return _img;
     }
     public int GetId()
     {
@@ -43,6 +55,8 @@ namespace PersonaFive.Objects
         bool idEquality = (this.GetId() == newShadow.GetId());
         bool nameEquality = (this.GetShadowName() == newShadow.GetShadowName());
         bool typeEqulity = (this.GetShadowType() == newShadow.GetShadowType());
+        bool introEquality = (this.GetIntro() == newShadow.GetIntro());
+        bool imgEquality = (this.GetImg() == newShadow.GetImg());
         return (idEquality && nameEquality && typeEqulity);
       }
     }
@@ -72,7 +86,9 @@ namespace PersonaFive.Objects
         int shadowId = rdr.GetInt32(0);
         string shadowName = rdr.GetString(1);
         string shadowType = rdr.GetString(2);
-        Shadow newShadow = new Shadow(shadowName, shadowType, shadowId);
+        string shadowIntro = rdr.GetString(3);
+        string shadowImg = rdr.GetString(4);
+        Shadow newShadow = new Shadow(shadowName, shadowType, shadowIntro, shadowImg, shadowId);
         allShadows.Add(newShadow);
       }
       if (rdr != null)
@@ -91,7 +107,7 @@ namespace PersonaFive.Objects
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("INSERT INTO shadows (name, type) OUTPUT INSERTED.id VALUES (@ShadowName, @ShadowType)", conn);
+      SqlCommand cmd = new SqlCommand("INSERT INTO shadows (name, type, intro, img) OUTPUT INSERTED.id VALUES (@ShadowName, @ShadowType, @ShadowIntro, @ShadowImg)", conn);
 
       SqlParameter nameParameter = new SqlParameter();
       nameParameter.ParameterName = "@ShadowName";
@@ -101,8 +117,18 @@ namespace PersonaFive.Objects
       typeParameter.ParameterName = "@ShadowType";
       typeParameter.Value = this.GetShadowType();
 
+      SqlParameter introParameter = new SqlParameter();
+      introParameter.ParameterName = "@ShadowIntro";
+      introParameter.Value = this.GetIntro();
+
+      SqlParameter imgParameter = new SqlParameter();
+      imgParameter.ParameterName = "@ShadowImg";
+      imgParameter.Value = this.GetImg();
+
       cmd.Parameters.Add(nameParameter);
       cmd.Parameters.Add(typeParameter);
+      cmd.Parameters.Add(introParameter);
+      cmd.Parameters.Add(imgParameter);
 
       SqlDataReader rdr = cmd.ExecuteReader();
 
@@ -136,14 +162,18 @@ namespace PersonaFive.Objects
       int foundShadowId = 0;
       string foundShadowName = null;
       string foundShadowType = null;
+      string foundShadowIntro = null;
+      string foundShadowImg = null;
 
       while(rdr.Read())
       {
         foundShadowId = rdr.GetInt32(0);
         foundShadowName = rdr.GetString(1);
         foundShadowType = rdr.GetString(2);
+        foundShadowIntro = rdr.Getstring(3);
+        foundShadowImg = rdr.GetString(4);
       }
-      Shadow foundShadow = new Shadow(foundShadowName, foundShadowType, foundShadowId);
+      Shadow foundShadow = new Shadow(foundShadowName, foundShadowType, foundShadowIntro, foundShadowImg, foundShadowId);
 
       if (rdr != null)
      {

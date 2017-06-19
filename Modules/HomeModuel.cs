@@ -33,8 +33,9 @@ namespace PersonaFive
         Dictionary<string, object> model = new Dictionary<string, object>{};
         Shadow randomShadow = new Shadow.Find(parameters.id);
         List<Answer> shadowAnswers = Shadow.GetAnswers();
+        Answer selecetedAnswer = Answer.Find(Request.Form["answer-id"]);
         string result = "";
-        if (shadowAnswers.Contains(Request.Form["answer-id"]))
+        if (shadowAnswers.Contains(selectedAnswer))
         {
           result = "Your answer pleases me";
         }
