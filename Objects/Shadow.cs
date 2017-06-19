@@ -247,35 +247,35 @@ namespace PersonaFive.Objects
       return answers;
     }
 
-    public Dictionary<string,object> RandomShadow(){
-      Dictionary<string, object> model = new Dictionary<string, object>{};
-      List<Shadow> allShadows = Shadow.GetAll();
-      int i = new Random().Next(1, allShadows.Count + 1 );
-      Shadow randomShadow = allShadows[i];
-
-      List<Answer> shadowAnswers = randomShadow.GetAnswers();
-
-      int j = new Random().Next(1, shadowAnswers.Count + 1);
-      Answer randomAnswer = shadowAnswers[j];
-      List<Question> allRandomQuestions = randomAnswer.GetQuestions();
-
-      int n = new Random().Next(1, allRandomQuestions.Count);
-      Question randomQuestion = allRandomQuestions[n];
-
-      List<Answer> allAnswers = Answer.GetAll();
-      int k = new Random().Next(1, allAnswers.Count + 1);
-      Answer answerOne = allAnswers[k];
-      int l = new Random().Next(2, allAnswers.Count);
-      Answer answerTwo = allAnswers[l];
-
-      List<Answer> displayedAnswers = new List<Answer>{};
-      displayedAnswers.Add(randomAnswer);
-      displayedAnswers.Add(answerOne);
-      displayedAnswers.Add(answerTwo);
-      model.Add("shadow", randomShadow);
-      model.Add("answers", displayedAnswers);
-      model.Add("quesion", randomQuestion);
-
-    }
+    // public Dictionary<string,object> RandomShadow(){
+    //   Dictionary<string, object> model = new Dictionary<string, object>{};
+    //   List<Shadow> allShadows = Shadow.GetAll();
+    //   int i = new Random().Next(1, allShadows.Count + 1 );
+    //   Shadow randomShadow = allShadows[i];
+    //
+    //   List<Answer> shadowAnswers = randomShadow.GetAnswers();
+    //
+    //   int j = new Random().Next(1, shadowAnswers.Count + 1);
+    //   Answer randomAnswer = shadowAnswers[j];
+    //   List<Question> allRandomQuestions = randomAnswer.GetQuestions();
+    //
+    //   int n = new Random().Next(1, allRandomQuestions.Count);
+    //   Question randomQuestion = allRandomQuestions[n];
+    //
+    //   List<Answer> allAnswers = Answer.GetAll();
+    //   int k = new Random().Next(1, allAnswers.Count + 1);
+    //   Answer answerOne = allAnswers[k];
+    //   int l = new Random().Next(2, allAnswers.Count);
+    //   Answer answerTwo = allAnswers[l];
+    //
+    //   List<Answer> displayedAnswers = new List<Answer>{};
+    //   displayedAnswers.Add(randomAnswer);
+    //   displayedAnswers.Add(answerOne);
+    //   displayedAnswers.Add(answerTwo);
+    //   model.Add("shadow", randomShadow);
+    //   model.Add("answers", displayedAnswers);
+    //   model.Add("quesion", randomQuestion);
+    //
+    // }
   }
 }
