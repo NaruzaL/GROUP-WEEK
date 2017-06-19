@@ -170,7 +170,7 @@ namespace PersonaFive.Objects
         foundShadowId = rdr.GetInt32(0);
         foundShadowName = rdr.GetString(1);
         foundShadowType = rdr.GetString(2);
-        foundShadowIntro = rdr.Getstring(3);
+        foundShadowIntro = rdr.GetString(3);
         foundShadowImg = rdr.GetString(4);
       }
       Shadow foundShadow = new Shadow(foundShadowName, foundShadowType, foundShadowIntro, foundShadowImg, foundShadowId);
@@ -187,13 +187,36 @@ namespace PersonaFive.Objects
      return foundShadow;
     }
 
+    public void AddAnswer(Answer newAnswer)
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("INSERT INTO shadows_answers (shadow_id, answer_id) VALUES (@AnswerId, @ShadowId);", conn);
+      SqlParameter answerIdParameter = new SqlParameter();
+      answerIdParameter.ParameterName = "@AnswerId";
+      answerIdParameter.Value = this.GetId();
+      cmd.Parameters.Add(answerIdParameter);
+
+      SqlParameter shadowIdParameter = new SqlParameter();
+      shadowIdParameter.ParameterName = "@ShadowId";
+      shadowIdParameter.Value = newAnswer.GetId();
+      cmd.Parameters.Add(shadowIdParameter);
+
+      cmd.ExecuteNonQuery();
+
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
 
     public List<Answer> GetAnswers()
     {
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("SELECT answers.* FROM shadows JOIN shadows_answers ON (shadows.id = shadows_answers.shadows_id) JOIN answers ON (shadows_answers.answer_id = answers.id) WHERE shadows.id = @ShadowId;", conn);
+      SqlCommand cmd = new SqlCommand("SELECT answers.* FROM shadows JOIN shadows_answers ON (shadows.id = shadows_answers.shadow_id) JOIN answers ON (shadows_answers.answer_id = answers.id) WHERE shadows.id = @ShadowId;", conn);
       SqlParameter shadowIdParameter = new SqlParameter();
       shadowIdParameter.ParameterName = "@ShadowId";
       shadowIdParameter.Value = this.GetId();
@@ -206,10 +229,11 @@ namespace PersonaFive.Objects
 
       while(rdr.Read())
         {
-          int AnswerId = rdr.GetInt32(0);
+          int answerId = rdr.GetInt32(0);
           string answerName = rdr.GetString(1);
           string answerType = rdr.GetString(2);
-          Answer foundAnswer = new Answer(answerName, answerType, AnswerId);
+          int answerQuestionId = rdr.GetInt32(3);
+          Answer foundAnswer = new Answer(answerName, answerType, answerQuestionId, answerId);
           answers.Add(foundAnswer);
         }
         if (rdr != null)

@@ -173,41 +173,67 @@ namespace PersonaFive.Objects
     }
 
 
-    // public List<Answer> GetAnswers()
-    // {
-    //   SqlConnection conn = DB.Connection();
-    //   conn.Open();
-    //
-    //   SqlCommand cmd = new SqlCommand("SELECT answers.* FROM shadows JOIN shadows_answers ON (shadows.id = shadows_answers.shadows_id) JOIN answers ON (shadows_answers.answer_id = answers.id) WHERE shadows.id = @AnswerId;", conn);
-    //   SqlParameter shadowIdParameter = new SqlParameter();
-    //   shadowIdParameter.ParameterName = "@AnswerId";
-    //   shadowIdParameter.Value = this.GetId();
-    //
-    //   cmd.Parameters.Add(shadowIdParameter);
-    //
-    //   SqlDataReader rdr = cmd.ExecuteReader();
-    //
-    //   List<Answer> answers = new List<Answer> {};
-    //
-    //   while(rdr.Read())
-    //     {
-    //       int AnswerId = rdr.GetInt32(0);
-    //       string answerAnswer = rdr.GetString(1);
-    //       string answerType = rdr.GetString(2);
-    //       Answer foundAnswer = new Answer(answerName, answerType, AnswerId);
-    //       answers.Add(foundAnswer);
-    //     }
-    //     if (rdr != null)
-    //     {
-    //       rdr.Close();
-    //     }
-    //
-    //   if (conn != null)
-    //   {
-    //     conn.Close();
-    //   }
-    //   return answers;
-    // }
+    public void AddShadow(Shadow newShadow)
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("INSERT INTO shadows_answers (shadow_id, answer_id) VALUES (@AnswerId, @ShadowId);", conn);
+      SqlParameter shadowIdParameter = new SqlParameter();
+      shadowIdParameter.ParameterName = "@ShadowId";
+      shadowIdParameter.Value = this.GetId();
+      cmd.Parameters.Add(shadowIdParameter);
+
+      SqlParameter answerIdParameter = new SqlParameter();
+      answerIdParameter.ParameterName = "@AnswerId";
+      answerIdParameter.Value = newShadow.GetId();
+      cmd.Parameters.Add(answerIdParameter);
+
+      cmd.ExecuteNonQuery();
+
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
+
+    public List<Shadow> GetShadows()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("SELECT shadows.* FROM answers JOIN shadows_answers ON (answers.id = shadows_answers.answer_id) JOIN shadows ON (shadows_answers.shadow_id = shadows.id) WHERE answers.id = @AnswerId;", conn);
+      SqlParameter answerIdParameter = new SqlParameter();
+      answerIdParameter.ParameterName = "@AnswerId";
+      answerIdParameter.Value = this.GetId();
+
+      cmd.Parameters.Add(answerIdParameter);
+
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      List<Shadow> shadows = new List<Shadow> {};
+
+      while(rdr.Read())
+        {
+          int shadowId = rdr.GetInt32(0);
+          string shadowName = rdr.GetString(1);
+          string shadowType = rdr.GetString(2);
+          string shadowIntro = rdr.GetString(3);
+          string shadowImg = rdr.GetString(4);
+          Shadow foundShadow = new Shadow(shadowName, shadowType, shadowIntro, shadowImg, shadowId);
+          shadows.Add(foundShadow);
+        }
+        if (rdr != null)
+        {
+          rdr.Close();
+        }
+
+      if (conn != null)
+      {
+        conn.Close();
+      }
+      return shadows;
+    }
 
   }
 }

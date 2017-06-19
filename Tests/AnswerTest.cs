@@ -60,6 +60,25 @@ namespace PersonaFive
       Assert.Equal(testAnswer, foundAnswer);
     }
 
+    [Fact]
+    public void Test_GetShadow_RetrievesAllShadowWithAnswer()
+    {
+
+      Answer testAnswer = new Answer("sentence answer", "gloomy", 1);
+      testAnswer.Save();
+
+      Shadow testShadow = new Shadow("Boogie man", "irritable", "intro sentence", "/Content/img/shadow.png");
+      testShadow.Save();
+      Shadow testShadow2 = new Shadow("something man", "gloomy", "intro sentence two", "/Content/img/shadow_two.png");
+      testShadow2.Save();
+
+      testAnswer.AddShadow(testShadow);
+      testAnswer.AddShadow(testShadow2);
+      List<Shadow> result = testAnswer.GetShadows();
+      List<Shadow> testList = new List<Shadow>{testShadow, testShadow2};
+      Assert.Equal(testList, result);
+    }
+
     public void Dispose()
     {
       Shadow.DeleteAll();
