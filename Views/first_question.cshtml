@@ -1,0 +1,18 @@
+@{
+  Layout="Shared/_Layout.cshtml";
+}
+
+<h2>@Model["shadow"].GetShadowName()</h2>
+<br>
+<h4>@Model["question"].GetQuestionName()</h4>
+<br>
+<form>
+</select>
+ <select name = "answer-id">
+   @foreach(var answer in @Model["answers"])
+   {
+     <option value="@answer.GetId()">@answer.GetAnswerName()</option>
+   }
+ </select>
+ <button type="submit">Submit</button>
+</form>
