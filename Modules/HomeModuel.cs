@@ -26,6 +26,7 @@ namespace PersonaFive
         model.Add("answers", answers);
         model.Add("quesion", randomQuestion);
         return View["first_question.cshtml", model];
+        //include shadow.GetId() in links
       };
 
       Post["/first_question/result/{id}"] = parameters => {
@@ -46,6 +47,7 @@ namespace PersonaFive
         // in .cshtml have "next question" link appear if result == good <a href = "/second_question/ask/@Model["shadow"].GetId()">Next question</a>
         // otherwise link back to "/"
         return View["result.cshtml", model];
+        //possibly need a bool for shadow to indicate question1 question2 correctness instead of string result
       };
 
       Get["second_question/ask/{id}"] = parameters => {
