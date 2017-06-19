@@ -67,9 +67,9 @@ namespace PersonaFive
       Shadow testShadow = new Shadow("Boogie man", "irritable", "intro sentence", "/Content/img/shadow.png");
       testShadow.Save();
 
-      Answer testAnswer = new Answer("sentence answer", "gloomy", 1);
+      Answer testAnswer = new Answer("sentence answer", "gloomy");
       testAnswer.Save();
-      Answer testAnswer2 = new Answer("sentece two", "irritable", 2);
+      Answer testAnswer2 = new Answer("sentece two", "irritable");
       testAnswer2.Save();
 
       testShadow.AddAnswer(testAnswer);

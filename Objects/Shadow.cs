@@ -232,8 +232,7 @@ namespace PersonaFive.Objects
           int answerId = rdr.GetInt32(0);
           string answerName = rdr.GetString(1);
           string answerType = rdr.GetString(2);
-          int answerQuestionId = rdr.GetInt32(3);
-          Answer foundAnswer = new Answer(answerName, answerType, answerQuestionId, answerId);
+          Answer foundAnswer = new Answer(answerName, answerType, answerId);
           answers.Add(foundAnswer);
         }
         if (rdr != null)
