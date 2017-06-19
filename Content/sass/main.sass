@@ -1,0 +1,105 @@
+@import 'base/typography'
+
+body
+  height: 100vh
+  background-image: url('../img/background3.jpg')
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
+  @media screen and (max-width: 1050px)
+    background-image: url('../img/mobile-background.jpg')
+
+
+.container
+  height: 100vh
+  width: 100vw
+  display: flex
+  justify-content: center
+
+#play
+  text-decoration: none
+  color: black
+  font-family: 'earwig'
+  height: 100px
+  width: 300px
+  align-self: center
+  margin-bottom: 80px
+  font-size: 100px
+  background: none
+  border: none
+  text-shadow: 2px 2px 0px #fe0000
+  letter-spacing: -10px
+  position: relative
+  &:hover
+    transform: scale(1.5,1.5) rotateZ(-20deg)
+    &::after
+      z-index: -1
+      left: 50px
+      top: 50px
+      position: absolute
+      content: ''
+      height: 70px
+      width: 130px
+      background-color: white
+      opacity: .7
+      animation: jigs .5s both infinite
+      animation-direction: alternate
+  &:focus
+    outline: none
+  &:active
+    outline: none
+
+
+#title1, #title2
+  font-family: 'earwig'
+  font-size: 100px
+  color: black
+  text-shadow: 6px 6px 8px #fe0000
+  letter-spacing: -10px
+  @media screen and (max-width: 1600px)
+    font-size: 70px
+  @media screen and (max-width: 1050px)
+    font-size: 90px
+  @media screen and (max-width: 800px)
+    font-size: 70px
+
+#title1
+  position: absolute
+  bottom: 100px
+  right: 100px
+  @media screen and (max-width: 800px)
+    right: 20px
+    bottom: 150px
+  @media screen and (max-width: 528px)
+    bottom: 250px
+    text-align: center
+    right: 50px
+
+
+
+#title2
+  position: absolute
+  bottom: 0
+  right: 100px
+  @media screen and (max-width: 800px)
+    right: 20px
+    bottom: 50px
+    text-align: center
+
+.inverse
+  color: #fe0000
+  text-shadow: 6px 6px 0px black
+
+@keyframes jigs
+  0%
+    transform: skew(70deg) rotate(0deg) scale(1)
+  20%
+    transform: skew(12deg) rotate(10deg) scale(1.2)
+  40%
+    transform: skew(32deg) rotate(-10deg) scale(1)
+  60%
+    transform: skew(1deg) rotate(15deg) scale(1.5)
+  80%
+    transform: skew(7deg) rotate(2deg) scale(1.1)
+  100%
+    transform: skew(42deg) rotate(-20deg) scale(1.6)
