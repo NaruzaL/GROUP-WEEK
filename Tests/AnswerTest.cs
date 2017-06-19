@@ -25,15 +25,15 @@ namespace PersonaFive
     [Fact]
     public void Test_Equal_ReturnsTrueIfAnswersAreTheSame()
     {
-      Answer firstAnswer = new Answer("Why so serious", "irritable");
-      Answer secondAnswer = new Answer("Why so serious", "irritable");
+      Answer firstAnswer = new Answer("Why so serious", "irritable", 1);
+      Answer secondAnswer = new Answer("Why so serious", "irritable", 1);
       Assert.Equal(firstAnswer, secondAnswer);
     }
 
     [Fact]
     public void Test_Save_ToAnswerDatabase()
     {
-      Answer testAnswer = new Answer("Why so serious", "irritable");
+      Answer testAnswer = new Answer("Why so serious", "irritable", 1);
       testAnswer.Save();
 
       List<Answer> result = Answer.GetAll();
@@ -44,7 +44,7 @@ namespace PersonaFive
     [Fact]
     public void Test_Save_AssignsIdToObject()
     {
-      Answer testAnswer = new Answer("Why so serious", "irritable");
+      Answer testAnswer = new Answer("Why so serious", "irritable", 1);
       testAnswer.Save();
       int testId = testAnswer.GetId();
       int savedAnswerId = Answer.GetAll()[0].GetId();
@@ -54,7 +54,7 @@ namespace PersonaFive
     [Fact]
     public void Test_Find_FindsAnswersInDatabase()
     {
-      Answer testAnswer = new Answer("Why so serious", "irritable");
+      Answer testAnswer = new Answer("Why so serious", "irritable", 1);
       testAnswer.Save();
       Answer foundAnswer = Answer.Find(testAnswer.GetId());
       Assert.Equal(testAnswer, foundAnswer);
