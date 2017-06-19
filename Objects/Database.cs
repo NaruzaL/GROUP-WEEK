@@ -1,7 +1,7 @@
 using System.Data;
 using System.Data.SqlClient;
 
-namespace Persona5.Objects
+namespace PersonaFive.Objects
 {
   public class DB
   {

@@ -4,9 +4,9 @@ using Microsoft.AspNet.Builder;
 using Nancy;
 using Nancy.Owin;
 using Nancy.ViewEngines.Razor;
-using Persona5.Objects;
+using PersonaFive.Objects;
 
-namespace BandTracker
+namespace PersonaFive
 {
   public class Startup
   {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
-namespace Persona5.Objects
+namespace PersonaFive.Objects
 {
   public class Answer
   {
@@ -17,11 +17,11 @@ namespace Persona5.Objects
       _id = Id;
     }
 
-    public string GetName()
+    public string GetAnswerName()
     {
       return _name;
     }
-    public string GetType()
+    public string GetAnswerType()
     {
       return _type;
     }
@@ -41,8 +41,8 @@ namespace Persona5.Objects
       {
         Answer newAnswer = (Answer) otherAnswer;
         bool idEquality = (this.GetId() == newAnswer.GetId());
-        bool nameEquality = (this.GetName() == newAnswer.GetName());
-        bool typeEqulity = (this.GetType() == newAnswer.GetType());
+        bool nameEquality = (this.GetAnswerName() == newAnswer.GetAnswerName());
+        bool typeEqulity = (this.GetAnswerType() == newAnswer.GetAnswerType());
         return (idEquality && nameEquality && typeEqulity);
       }
     }
@@ -91,18 +91,18 @@ namespace Persona5.Objects
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("INSERT INTO answers (name, type) OUTPUT INSERTED.id VALUES (@AnswerName, @AnswerType)", conn);
+      SqlCommand cmd = new SqlCommand("INSERT INTO answers (answer, type) OUTPUT INSERTED.id VALUES (@AnswerName, @AnswerType)", conn);
 
       SqlParameter nameParameter = new SqlParameter();
       nameParameter.ParameterName = "@AnswerName";
-      nameParameter.Value = this.GetName();
+      nameParameter.Value = this.GetAnswerName();
 
       SqlParameter typeParameter = new SqlParameter();
       typeParameter.ParameterName = "@AnswerType";
-      typeParameter.Value = this.GetName();
+      typeParameter.Value = this.GetAnswerType();
 
-      cmd.Parameters.Add(typeParameter);
       cmd.Parameters.Add(nameParameter);
+      cmd.Parameters.Add(typeParameter);
 
       SqlDataReader rdr = cmd.ExecuteReader();
 

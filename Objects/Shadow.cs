@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
-namespace Persona5.Objects
+namespace PersonaFive.Objects
 {
   public class Shadow
   {
@@ -17,11 +17,11 @@ namespace Persona5.Objects
       _id = Id;
     }
 
-    public string GetName()
+    public string GetShadowName()
     {
       return _name;
     }
-    public string GetType()
+    public string GetShadowType()
     {
       return _type;
     }
@@ -41,8 +41,8 @@ namespace Persona5.Objects
       {
         Shadow newShadow = (Shadow) otherShadow;
         bool idEquality = (this.GetId() == newShadow.GetId());
-        bool nameEquality = (this.GetName() == newShadow.GetName());
-        bool typeEqulity = (this.GetType() == newShadow.GetType());
+        bool nameEquality = (this.GetShadowName() == newShadow.GetShadowName());
+        bool typeEqulity = (this.GetShadowType() == newShadow.GetShadowType());
         return (idEquality && nameEquality && typeEqulity);
       }
     }
@@ -95,14 +95,14 @@ namespace Persona5.Objects
 
       SqlParameter nameParameter = new SqlParameter();
       nameParameter.ParameterName = "@ShadowName";
-      nameParameter.Value = this.GetName();
+      nameParameter.Value = this.GetShadowName();
 
       SqlParameter typeParameter = new SqlParameter();
       typeParameter.ParameterName = "@ShadowType";
-      typeParameter.Value = this.GetName();
+      typeParameter.Value = this.GetShadowType();
 
-      cmd.Parameters.Add(typeParameter);
       cmd.Parameters.Add(nameParameter);
+      cmd.Parameters.Add(typeParameter);
 
       SqlDataReader rdr = cmd.ExecuteReader();
 
