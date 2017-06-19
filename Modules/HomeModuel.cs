@@ -40,6 +40,8 @@ namespace PersonaFive
         {
           result = "bad";
         }
+        model.Add("shadow", randomShadow);
+        model.Add("result", result);
         // in .cshtml have "next question" link appear if result == good <a href = "/second_question/ask/@Model["shadow"].GetId()">Next question</a>
         // otherwise link back to "/"
         return View["result.cshtml", model];
