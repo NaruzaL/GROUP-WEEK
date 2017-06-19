@@ -19,14 +19,14 @@ namespace PersonaFive
         Shadow randomShadow = allShadows[i];
         List<Answer> shadowAnswer = randomShadow.GetAnswers();
         //make random selecion of one answer in shadowAnswers | shadowAnswer = shadowAnswers[i] (same as randomShadow)
-        Question randomQuestion = shadowAnwer.FindQuestion(); //FindQuestion will need to be written
+        Question randomQuestion = shadowAnwer.FindQuestion(); //FindQuestion() method will need to be written
         List<Answer> allAnswers = Answers.GetAll();
-        //make random selection of two other answers that are not same type as selected shadow (method ?AddDummies?)| List<Answer> answers = ..., answer.Add("shadowanswer") | shuffle positions of list then display(method ?Shuffle?) ["anwers", answers]
+        //make random selection of two other answers that are not same type as selected shadow (method ?AddDummies?)| List<Answer> answers = allAnswers.GetTwoRandoms() | answers.Add("shadowanswer") | shuffle positions of list then display(method ?Shuffle?) ["anwers", answers]
         model.Add("shadow", randomShadow);
         model.Add("answers", answers);
         model.Add("quesion", randomQuestion);
         return View["first_question.cshtml", model];
-        //include shadow.GetId() in links
+        //include shadow.GetId() in links | parameters?
       };
 
       Post["/first_question/result/{id}"] = parameters => {
