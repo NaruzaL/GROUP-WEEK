@@ -127,7 +127,9 @@ select {
   height: 400px;
   position: absolute;
   bottom: 0;
-  left: 50%; }
+  left: 50%;
+  -webkit-filter: drop-shadow(5px 5px 0px red);
+  filter: drop-shadow(5px 5px 0px red); }
 
 #reply:hover::after {
   width: 200px; }
