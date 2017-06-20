@@ -119,3 +119,15 @@ Q. Are you a good person?
 Gloomy/Vague: Perhaps...
 Upbeat/Funny: Girl pls...
 * Timid/Kind: Of course, I'm an upstanding citizen!
+
+
+
+Shadows:
+
+Name: Arsene
+Type: Upbeat
+Intro: Hey there lil feller! Isn't it a beautiful day for being alive?!  You look like someone I could be a best friend with.
+
+Name: Captain Kidd
+Type: Upbeat
+Intro: Ahoy there matey! Don't you just love the smell of the ocean breeze?!  You should join my crew as long as you're not a salty landlubber.
