@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,12 +5,12 @@
     <meta charset="utf-8">
     <title></title>
   </head>
-  <body class="first-question">
+  <body class="second-question">
     <img class="shadow" src="@Model["shadow"].GetImg()" alt="@Model["shadow"].GetShadowName()">
     <h2>@Model["shadow"].GetShadowName()</h2>
     <h3>@Model["shadow"].GetIntro()</h3>
     <h4>@Model["question"].GetQuestionName()</h4>
-    <form action="/first_question/result/@Model["shadow"].GetId()" method="post">
+    <form action="/second_question/result/@Model["shadow"].GetId()" method="post">
       <select name="answer-id">
         @foreach(var answer in @Model["answers"])
         {
@@ -23,24 +22,3 @@
     </form>
   </body>
 </html>
-
-
-<!---////Original Code////---->
-<!-- <img src="@Model["shadow"].GetImg()" alt="@Model["shadow"].GetShadowName()">
-<h2>@Model["shadow"].GetShadowName()</h2>
-<br>
-<h3>@Model["shadow"].GetIntro()</h3>
-<h4>@Model["question"].GetQuestionName()</h4>
-<br>
-<form>
-</select>
-<select name = "answer-id">
-@foreach(var answer in @Model["answers"])
-{
-<option value="@answer.GetId()">@answer.GetAnswerName()</option>
-}
-<input type="hidden" name="shadow-id" value="@Model["shadow"].GetId()">
-</select>
-<button type="submit">Submit</button>
-</form> -->
-<!---////Original Code////---->

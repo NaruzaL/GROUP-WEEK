@@ -66,7 +66,7 @@ namespace PersonaFive
 
       Get["second_question/ask/{id}"] = parameters => {
         Dictionary<string, object> model = new Dictionary<string, object>{};
-        Shadow sameShadow = Shadow.Find(Request.Form["shadow-id"]);
+        Shadow sameShadow = Shadow.Find(parameters.id);
 
         List<Answer> shadowAnswers = sameShadow.GetAnswers();
         int n = new Random().Next(1, shadowAnswers.Count + 1);
@@ -101,7 +101,7 @@ namespace PersonaFive
         model.Add("shadow", sameShadow);
         model.Add("answers", questionAnswers);
         model.Add("question", answerQuestion);
-        return View["first_question.cshtml", model];
+        return View["second_question.cshtml", model];
       };
 
       Post["/second_question/result/{id}"] = parameters => {
