@@ -7,7 +7,7 @@
 <br>
 <h4>@Model["question"].GetQuestionName()</h4>
 <br>
-<form action="/first_question/result/@Model[shadow].GetId()" method="post">
+<form action="/first_question/result/@Model["shadow"].GetId()" method="post">
 <input type="hidden" name="shadow-id" value="@Model["shadow"].GetId()">
 </select>
  <select name = "answer-id">
