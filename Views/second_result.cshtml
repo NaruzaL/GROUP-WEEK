@@ -2,8 +2,8 @@
 
 @if (@Model["answer"].GetAnswerType() == @Model["shadow"].GetShadowType())
 {
-  <h4>Your answer pleases me</h4>
-  <a href="/second_question/ask/@Model["shadow"].GetId()">Next question</a>
+  <h4>You got me</h4>
+  <a href="/capture/@Model["shadow"].GetId()">Victory</a>
 }
 else
 {

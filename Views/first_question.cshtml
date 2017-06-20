@@ -2,6 +2,7 @@
 
 <h2>@Model["shadow"].GetShadowName()</h2>
 <br>
+<h3>@Model["shadow"].GetIntro()</h3>
 <h4>@Model["question"].GetQuestionName()</h4>
 <br>
 <form>
@@ -11,7 +12,7 @@
    {
      <option value="@answer.GetId()">@answer.GetAnswerName()</option>
    }
-   <input type="hidden" name="shadow-id" value="@Model[shadow].GetId()">
+   <input type="hidden" name="shadow-id" value="@Model["shadow"].GetId()">
  </select>
  <button type="submit">Submit</button>
 </form>

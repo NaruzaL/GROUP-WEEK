@@ -8,14 +8,12 @@ namespace PersonaFive.Objects
   {
     private string _name;
     private string _type;
-    private int _answerId;
     private int _id;
 
-    public Question(string Name, string Type, int AnswerId, int Id = 0)
+    public Question(string Name, string Type, int Id = 0)
     {
       _name = Name;
       _type = Type;
-      _answerId = AnswerId;
       _id = Id;
     }
 
@@ -26,10 +24,6 @@ namespace PersonaFive.Objects
     public string GetQuestionType()
     {
       return _type;
-    }
-    public int GetAnswerId()
-    {
-      return _answerId;
     }
     public int GetId()
     {
@@ -49,8 +43,7 @@ namespace PersonaFive.Objects
         bool idEquality = (this.GetId() == newQuestion.GetId());
         bool nameEquality = (this.GetQuestionName() == newQuestion.GetQuestionName());
         bool typeEqulity = (this.GetQuestionType() == newQuestion.GetQuestionType());
-        bool answerIdEquality = (this.GetAnswerId() == newQuestion.GetAnswerId());
-        return (idEquality && nameEquality && typeEqulity && answerIdEquality);
+        return (idEquality && nameEquality && typeEqulity);
       }
     }
 
@@ -79,8 +72,7 @@ namespace PersonaFive.Objects
         int questionId = rdr.GetInt32(0);
         string questionName = rdr.GetString(1);
         string questionType = rdr.GetString(2);
-        int questionAnswerId = rdr.GetInt32(3);
-        Question newQuestion = new Question(questionName, questionType, questionAnswerId, questionId);
+        Question newQuestion = new Question(questionName, questionType, questionId);
         allQuestions.Add(newQuestion);
       }
       if (rdr != null)
@@ -99,7 +91,7 @@ namespace PersonaFive.Objects
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("INSERT INTO questions (question, type, answer_id) OUTPUT INSERTED.id VALUES (@QuestionName, @QuestionType, @QuestionAnswerId)", conn);
+      SqlCommand cmd = new SqlCommand("INSERT INTO questions (question, type) OUTPUT INSERTED.id VALUES (@QuestionName, @QuestionType)", conn);
 
       SqlParameter nameParameter = new SqlParameter();
       nameParameter.ParameterName = "@QuestionName";
@@ -109,13 +101,8 @@ namespace PersonaFive.Objects
       typeParameter.ParameterName = "@QuestionType";
       typeParameter.Value = this.GetQuestionType();
 
-      SqlParameter answerIdParameter = new SqlParameter();
-      answerIdParameter.ParameterName = "@QuestionAnswerId";
-      answerIdParameter.Value = this.GetAnswerId();
-
       cmd.Parameters.Add(nameParameter);
       cmd.Parameters.Add(typeParameter);
-      cmd.Parameters.Add(answerIdParameter);
 
       SqlDataReader rdr = cmd.ExecuteReader();
 
@@ -149,16 +136,14 @@ namespace PersonaFive.Objects
       int foundQuestionId = 0;
       string foundQuestionName = null;
       string foundQuestionType = null;
-      int foundQuestionAnswerId = 0;
 
       while(rdr.Read())
       {
         foundQuestionId = rdr.GetInt32(0);
         foundQuestionName = rdr.GetString(1);
         foundQuestionType = rdr.GetString(2);
-        foundQuestionAnswerId = rdr.GetInt32(3);
       }
-      Question foundQuestion = new Question(foundQuestionName, foundQuestionType, foundQuestionAnswerId, foundQuestionId);
+      Question foundQuestion = new Question(foundQuestionName, foundQuestionType, foundQuestionId);
 
       if (rdr != null)
      {
@@ -170,6 +155,67 @@ namespace PersonaFive.Objects
      }
 
      return foundQuestion;
+    }
+
+    public void AddAnswer(Answer newAnswer)
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("INSERT INTO questions_answers (question_id, answer_id) VALUES ( @AnswerId, @QuestionId);", conn);
+      SqlParameter AnswerIdParameter = new SqlParameter();
+      AnswerIdParameter.ParameterName = "@AnswerId";
+      AnswerIdParameter.Value = this.GetId();
+      cmd.Parameters.Add(AnswerIdParameter);
+
+      SqlParameter questionIdParameter = new SqlParameter();
+      questionIdParameter.ParameterName = "@QuestionId";
+      questionIdParameter.Value = newAnswer.GetId();
+      cmd.Parameters.Add(questionIdParameter);
+
+      cmd.ExecuteNonQuery();
+
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
+
+    public List<Answer> GetAnswers()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("SELECT answers.* FROM questions JOIN questions_answers ON (questions.id = questions_answers.question_id) JOIN answers ON (questions_answers.answer_id = answers.id) WHERE questions.id = @QuestionId;", conn);
+      SqlParameter questionIdParameter = new SqlParameter();
+      questionIdParameter.ParameterName = "@QuestionId";
+      questionIdParameter.Value = this.GetId();
+
+      cmd.Parameters.Add(questionIdParameter);
+
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      List<Answer> answers = new List<Answer> {};
+
+      while(rdr.Read())
+        {
+          int answerId = rdr.GetInt32(0);
+          string answerName = rdr.GetString(1);
+          string answerType = rdr.GetString(2);
+
+          Answer foundAnswer = new Answer(answerName, answerType, answerId);
+          answers.Add(foundAnswer);
+        }
+        if (rdr != null)
+        {
+          rdr.Close();
+        }
+
+      if (conn != null)
+      {
+        conn.Close();
+      }
+      return answers;
     }
 
   }

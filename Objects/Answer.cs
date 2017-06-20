@@ -220,37 +220,64 @@ namespace PersonaFive.Objects
       return shadows;
     }
 
+    public void AddQuestion(Question newQuestion)
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("INSERT INTO questions_answers (question_id, answer_id) VALUES (@QuestionId, @AnswerId);", conn);
+      SqlParameter questionIdParameter = new SqlParameter();
+      questionIdParameter.ParameterName = "@QuestionId";
+      questionIdParameter.Value = this.GetId();
+      cmd.Parameters.Add(questionIdParameter);
+
+      SqlParameter answerIdParameter = new SqlParameter();
+      answerIdParameter.ParameterName = "@AnswerId";
+      answerIdParameter.Value = newQuestion.GetId();
+      cmd.Parameters.Add(answerIdParameter);
+
+      cmd.ExecuteNonQuery();
+
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
+
     public List<Question> GetQuestions()
     {
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("SELECT * FROM questions WHERE answer_id = @AnswerId;", conn);
-      SqlParameter questionIdParameter = new SqlParameter();
-      questionIdParameter.ParameterName = "@AnswerId";
-      questionIdParameter.Value = this.GetId();
-      cmd.Parameters.Add(questionIdParameter);
+      SqlCommand cmd = new SqlCommand("SELECT questions.* FROM answers JOIN questions_answers ON (answers.id = shadows_answers.answer_id) JOIN questions ON (shadows_answers.question_id = question.id) WHERE answers.id = @AnswerId;", conn);
+      SqlParameter answerIdParameter = new SqlParameter();
+      answerIdParameter.ParameterName = "@AnswerId";
+      answerIdParameter.Value = this.GetId();
+
+      cmd.Parameters.Add(answerIdParameter);
+
       SqlDataReader rdr = cmd.ExecuteReader();
 
-      List<Question> questions = new List<Question> {};
+      List<Question> shadows = new List<Question> {};
+
       while(rdr.Read())
-      {
-        int questionId = rdr.GetInt32(0);
-        string questionName = rdr.GetString(1);
-        string questionType = rdr.GetString(2);
-        int questionAnswerId = rdr.GetInt32(3);
-        Question newQuestion = new Question(questionName, questionType, questionAnswerId, questionId);
-        questions.Add(newQuestion);
-      }
-      if (rdr != null)
-      {
-        rdr.Close();
-      }
+        {
+          int questionId = rdr.GetInt32(0);
+          string questionName = rdr.GetString(1);
+          string questionType = rdr.GetString(2);
+          Question foundQuestion = new Question(questionName, questionType, questionId);
+          shadows.Add(foundQuestion);
+        }
+        if (rdr != null)
+        {
+          rdr.Close();
+        }
+
       if (conn != null)
       {
         conn.Close();
       }
-      return questions;
+      return shadows;
     }
 
   }
