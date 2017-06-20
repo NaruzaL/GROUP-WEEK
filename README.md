@@ -124,50 +124,50 @@ Upbeat/Funny: Girl pls...
 
 Shadows:
 
-Name: Arsene
+Name: Ar<span class="inverse">S</span>Ene
 Type: Upbeat
 Intro: Hey there lil feller! Isn't it a beautiful day for being alive?!  You look like someone I could be a best friend with.
 
-Name: Captain Kidd
+Name: Ca<span class="inverse">p</span>TAi<span class="inverse">n</span> KiDd
 Type: Upbeat
 Intro: Ahoy there matey! Don't you just love the smell of the ocean breeze?!  You should join my crew as long as you're not a salty landlubber.
 
-Name: Johanna
+Name: J<span class="inverse">o</span>h<span class="inverse">A</span>nNa
 Type: Upbeat
 Intro: Hey there easy rider!  There's nothing like the thrill of cruising down a windy road all to yourself, don't you agree? Hop on and let's go for a ride!
 
-Name: Cerberus
+Name: C<span class="inverse">e</span>RberuS
 Type: Timid
 Intro: Hi... you smell like fish... I like fish... do you like me?
 
-Name: Necronomicon
+Name: NEcr<span class="inverse">O</span>noM<span class="inverse">i</span>con
 Type: Timid
 Intro: Beep Bloop... I'm shy... beep. Wanna be friends? ...bleep.
 
-Name: Milady
+Name: miL<span class="inverse">A</span>dy
 Type: Timid
 Intro:  Hello darling...  I see you looking at me.  Aren't you going to ask me to dance?
 
-Name: Goemon
+Name: G<span class="inverse">O</span>emoN
 Type: Irritable
 Intro: Ugh, what do you want? You're standing in the way of my fans.  Do you really think I wore these shoes for YOUR sake?!
 
-Name: Carmen
+Name: CA<span class="inverse">r</span>me<span class="inverse">n</span>
 Type: Irritable
 Intro: Oh great, another pitiful loser has come to worship me.  I don't have time for this.  Get in line.  
 
-Name: Zorro
+Name: ZO<span class="inverse">R</span>ro
 Type: Irritable
 Intro: You actually think that YOU can challenge ME to a duel?  Don't waste my time.
 
-Name: Ongyo-Ki
+Name: O<span class="inverse">n</span>gyo-Ki
 Type: Gloomy
 Intro: What? Oh.. Hi.  Sorry I didn't see you.  I'll move, I'm always in the way.  *sigh*
 
-Name: Tsukuyomi
+Name: T<span class="inverse">S</span>U<span class="inverse">k</span>uYomi
 Type: Gloomy
 Intro: *Tsukuyomi looks at you with a forlorn face and remains silent*
 
-Name: Chronos
+Name: <span class="inverse">C</span>hron<span class="inverse">o</span>s
 Type: Gloomy
 Intro:  What are you trying to do?  Battle me?  I see how this all ends... there's no point.  

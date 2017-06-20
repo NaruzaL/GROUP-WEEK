@@ -124,12 +124,19 @@ select {
   background-size: cover; }
 
 .shadow {
-  height: 400px;
+  height: 600px;
   position: absolute;
   bottom: 0;
-  left: 50%;
+  left: 45%;
   -webkit-filter: drop-shadow(5px 5px 0px red);
   filter: drop-shadow(5px 5px 0px red); }
+
+h2 {
+  font-family: "earwig";
+  font-size: 100px;
+  color: black;
+  text-shadow: 2px 2px 0px #fe0000;
+  letter-spacing: -10px; }
 
 #reply:hover::after {
   width: 200px; }
