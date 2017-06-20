@@ -7,9 +7,11 @@
   </head>
   <body class="second-question">
     <img class="shadow" src="@Model["shadow"].GetImg()" alt="@Model["shadow"].GetShadowName()">
-    <h2>@Model["shadow"].GetShadowName()</h2>
-    <h3>@Model["shadow"].GetIntro()</h3>
-    <h4>@Model["question"].GetQuestionName()</h4>
+    <h2 class="name">@Model["shadow"].GetShadowName()</h2>
+    <div class="speech">
+      <h3 class="intro">@Model["shadow"].GetIntro()</h3>
+      <h4 class="question">@Model["question"].GetQuestionName()</h4>
+    </div>
     <form action="/second_question/result/@Model["shadow"].GetId()" method="post">
         @foreach(var answer in @Model["answers"])
         {
