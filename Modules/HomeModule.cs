@@ -45,10 +45,11 @@ namespace PersonaFive
           }
         }
         int a = new Random().Next(1, leftOverAnswers.Count + 1);
-        questionAnswers.Add(leftOverAnswers[a-1]);
-        int b = new Random().Next(1, leftOverAnswers.Count + 1);
-        questionAnswers.Add(leftOverAnswers[b-1]);
-
+        leftOverAnswers.Remove(leftOverAnswers[a-1]);
+        foreach (var answer in leftOverAnswers)
+        {
+          questionAnswers.Add(answer);
+        }
         model.Add("shadow", randomShadow);
         model.Add("answers", questionAnswers);
         model.Add("question", answerQuestion);
@@ -94,9 +95,11 @@ namespace PersonaFive
           }
         }
         int a = new Random().Next(1, leftOverAnswers.Count + 1);
-        questionAnswers.Add(leftOverAnswers[a-1]);
-        int b = new Random().Next(1, leftOverAnswers.Count + 1);
-        questionAnswers.Add(leftOverAnswers[b-1]);
+        leftOverAnswers.Remove(leftOverAnswers[a-1]);
+        foreach (var answer in leftOverAnswers)
+        {
+          questionAnswers.Add(answer);
+        }
 
         model.Add("shadow", sameShadow);
         model.Add("answers", questionAnswers);
