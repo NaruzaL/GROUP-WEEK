@@ -12,12 +12,10 @@
     <h3>@Model["shadow"].GetIntro()</h3>
     <h4>@Model["question"].GetQuestionName()</h4>
     <form action="/first_question/result/@Model["shadow"].GetId()" method="post">
-      <select name="answer-id">
         @foreach(var answer in @Model["answers"])
         {
-          <option value="@answer.GetId()">@answer.GetAnswerName()</option>
+          <input type="radio" name="answer-id" value="@answer.GetId()">@answer.GetAnswerName()
         }
-      </select>
       <input type="hidden" name="shadow-id" value="@Model["shadow"].GetId()">
       <button id="reply" type="submit" name="button">ReP<span class="inverse">L</span>y</button>
     </form>
