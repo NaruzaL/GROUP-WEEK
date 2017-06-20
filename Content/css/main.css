@@ -189,22 +189,22 @@ select {
     margin-left: 100px;
     font-size: 24px; }
 
-.first-question label .timid {
+.first-question .timid {
   position: absolute;
   right: 4%;
   top: 35%;
   transform: rotate(30deg); }
-.first-question label .gloomy {
+.first-question .gloomy {
   position: absolute;
   right: 5%;
   top: 5%;
   transform: rotateZ(20deg); }
-.first-question label .irritable {
+.first-question .irritable {
   position: absolute;
   top: 20%;
   right: 20%;
   transform: rotateZ(-20deg); }
-.first-question label .upbeat {
+.first-question .upbeat {
   position: absolute;
   bottom: 25%;
   right: 15%;
