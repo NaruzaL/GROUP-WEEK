@@ -20,16 +20,38 @@ namespace PersonaFive
         Shadow randomShadow = allShadows[i-1];
 
         List<Answer> shadowAnswers = randomShadow.GetAnswers();
-
-        List<Question> answerQuestions = shadowAnswers[0].GetQuestions();
+        int n = new Random().Next(1, shadowAnswers.Count + 1);
+        Answer shadowAnswer = shadowAnswers[n-1];
+        List<Question> answerQuestions = shadowAnswer.GetQuestions();
         int j = new Random().Next(1, answerQuestions.Count + 1);
-        Question newQuestion = answerQuestions[j-1];
+        Question answerQuestion = answerQuestions[j -1];
 
-        List<Answer> newAnswers = newQuestion.GetAnswers();
+
+        List<Answer> newAnswers = answerQuestion.GetAnswers();
+
+        List<Answer> leftOverAnswers = new List<Answer>{};
+        List<Answer> questionAnswers = new List<Answer>{};
+        foreach (var answer in newAnswers)
+        {
+          string shadowType = randomShadow.GetShadowType();
+          string answerType = answer.GetAnswerType();
+          if (answerType == shadowType)
+          {
+            questionAnswers.Add(answer);
+          }
+          else
+          {
+            leftOverAnswers.Add(answer);
+          }
+        }
+        int a = new Random().Next(1, leftOverAnswers.Count + 1);
+        questionAnswers.Add(leftOverAnswers[a]);
+        int b = new Random().Next(1, leftOverAnswers.Count + 1);
+        questionAnswers.Add(leftOverAnswers[b]);
 
         model.Add("shadow", randomShadow);
         model.Add("answers", newAnswers);
-        model.Add("question", newQuestion);
+        model.Add("question", questionAnswers);
         return View["first_question.cshtml", model];
       };
 
@@ -47,15 +69,38 @@ namespace PersonaFive
         Shadow sameShadow = Shadow.Find(Request.Form["shadow-id"]);
 
         List<Answer> shadowAnswers = sameShadow.GetAnswers();
-        List<Question> answerQuestions = shadowAnswers[0].GetQuestions();
+        int n = new Random().Next(1, shadowAnswers.Count + 1);
+        Answer shadowAnswer = shadowAnswers[n-1];
+        List<Question> answerQuestions = shadowAnswer.GetQuestions();
         int j = new Random().Next(1, answerQuestions.Count + 1);
-        Question newQuestion = answerQuestions[j-1];
+        Question answerQuestion = answerQuestions[j -1];
 
-        List<Answer> newAnswers = newQuestion.GetAnswers();
+
+        List<Answer> newAnswers = answerQuestion.GetAnswers();
+
+        List<Answer> leftOverAnswers = new List<Answer>{};
+        List<Answer> questionAnswers = new List<Answer>{};
+        foreach (var answer in newAnswers)
+        {
+          string shadowType = sameShadow.GetShadowType();
+          string answerType = answer.GetAnswerType();
+          if (answerType == shadowType)
+          {
+            questionAnswers.Add(answer);
+          }
+          else
+          {
+            leftOverAnswers.Add(answer);
+          }
+        }
+        int a = new Random().Next(1, leftOverAnswers.Count + 1);
+        questionAnswers.Add(leftOverAnswers[a]);
+        int b = new Random().Next(1, leftOverAnswers.Count + 1);
+        questionAnswers.Add(leftOverAnswers[b]);
 
         model.Add("shadow", sameShadow);
-        model.Add("answers", newAnswers);
-        model.Add("question", newQuestion);
+        model.Add("answers", questionAnswers);
+        model.Add("question", answerQuestion);
         return View["first_question.cshtml", model];
       };
 

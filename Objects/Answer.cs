@@ -225,7 +225,7 @@ namespace PersonaFive.Objects
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("INSERT INTO questions_answers (question_id, answer_id) VALUES (@QuestionId, @AnswerId);", conn);
+      SqlCommand cmd = new SqlCommand("INSERT INTO questions_answers (question_id, answer_id) VALUES (@AnswerId, @QuestionId);", conn);
       SqlParameter questionIdParameter = new SqlParameter();
       questionIdParameter.ParameterName = "@QuestionId";
       questionIdParameter.Value = this.GetId();
@@ -249,7 +249,7 @@ namespace PersonaFive.Objects
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("SELECT questions.* FROM answers JOIN questions_answers ON (answers.id = shadows_answers.answer_id) JOIN questions ON (shadows_answers.question_id = question.id) WHERE answers.id = @AnswerId;", conn);
+      SqlCommand cmd = new SqlCommand("SELECT questions.* FROM answers JOIN questions_answers ON (answers.id = questions_answers.answer_id) JOIN questions ON (questions_answers.question_id = questions.id) WHERE answers.id = @AnswerId;", conn);
       SqlParameter answerIdParameter = new SqlParameter();
       answerIdParameter.ParameterName = "@AnswerId";
       answerIdParameter.Value = this.GetId();
@@ -258,7 +258,7 @@ namespace PersonaFive.Objects
 
       SqlDataReader rdr = cmd.ExecuteReader();
 
-      List<Question> shadows = new List<Question> {};
+      List<Question> questions = new List<Question> {};
 
       while(rdr.Read())
         {
@@ -266,7 +266,7 @@ namespace PersonaFive.Objects
           string questionName = rdr.GetString(1);
           string questionType = rdr.GetString(2);
           Question foundQuestion = new Question(questionName, questionType, questionId);
-          shadows.Add(foundQuestion);
+          questions.Add(foundQuestion);
         }
         if (rdr != null)
         {
@@ -277,7 +277,7 @@ namespace PersonaFive.Objects
       {
         conn.Close();
       }
-      return shadows;
+      return questions;
     }
 
   }
