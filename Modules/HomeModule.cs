@@ -114,7 +114,7 @@ namespace PersonaFive
       };
 
       Get["/capture/{id}"] = parameters => {
-        Shadow capturedShadow = Shadow.Find(Request.Form["shadow-id"]);
+        Shadow capturedShadow = Shadow.Find(parameters.id);
         return View["capture.cshtml", capturedShadow];
       };
 
