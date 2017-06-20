@@ -274,7 +274,7 @@ namespace PersonaFive.Objects
     //   model.Add("shadow", randomShadow);
     //   model.Add("answers", displayedAnswers);
     //   model.Add("quesion", randomQuestion);
-    //
+    //   return model;
     // }
   }
 }

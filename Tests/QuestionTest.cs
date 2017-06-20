@@ -25,15 +25,15 @@ namespace PersonaFive
     [Fact]
     public void Test_Equal_ReturnsTrueIfQuestionsAreTheSame()
     {
-      Question firstQuestion = new Question("What is your favorite color", "gloomy", 1);
-      Question secondQuestion = new Question("What is your favorite color", "gloomy", 1);
+      Question firstQuestion = new Question("What is your favorite color", "gloomy");
+      Question secondQuestion = new Question("What is your favorite color", "gloomy");
       Assert.Equal(firstQuestion, secondQuestion);
     }
 
     [Fact]
     public void Test_Save_ToQuestionDatabase()
     {
-      Question testQuestion = new Question("What is your favorite color", "gloomy", 2);
+      Question testQuestion = new Question("What is your favorite color", "gloomy");
       testQuestion.Save();
 
       List<Question> result = Question.GetAll();
@@ -44,7 +44,7 @@ namespace PersonaFive
     [Fact]
     public void Test_Save_AssignsIdToObject()
     {
-      Question testQuestion = new Question("What is your favorite color", "gloomy", 2);
+      Question testQuestion = new Question("What is your favorite color", "gloomy");
       testQuestion.Save();
       int testId = testQuestion.GetId();
       int savedQuestionId = Question.GetAll()[0].GetId();
@@ -54,10 +54,29 @@ namespace PersonaFive
     [Fact]
     public void Test_Find_FindsQuestionsInDatabase()
     {
-      Question testQuestion = new Question("What is your favorite color", "gloomy", 2);
+      Question testQuestion = new Question("What is your favorite color", "gloomy");
       testQuestion.Save();
       Question foundQuestion = Question.Find(testQuestion.GetId());
       Assert.Equal(testQuestion, foundQuestion);
+    }
+
+    [Fact]
+    public void Test_GetAnswer_RetrievesAllAnswerWithQuestion()
+    {
+
+      Question testQuestion = new Question("sentence question", "gloomy");
+      testQuestion.Save();
+
+      Answer testAnswer = new Answer("sentence answer", "gloomy");
+      testAnswer.Save();
+      Answer testAnswer2 = new Answer("sentence2 answer2", "timid");
+      testAnswer2.Save();
+
+      testQuestion.AddAnswer(testAnswer);
+      testQuestion.AddAnswer(testAnswer2);
+      List<Answer> result = testQuestion.GetAnswers();
+      List<Answer> testList = new List<Answer>{testAnswer, testAnswer2};
+      Assert.Equal(testList, result);
     }
 
     public void Dispose()
