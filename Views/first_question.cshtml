@@ -14,31 +14,11 @@
     <form action="/first_question/result/@Model["shadow"].GetId()" method="post">
         @foreach(var answer in @Model["answers"])
         {
-          <input type="radio" name="answer-id" value="@answer.GetId()">@answer.GetAnswerName()
+          <input class="@Model["answers"].GetType()" type="radio" name="answer-id" value="@answer.GetId()">@answer.GetAnswerName()
         }
       <input type="hidden" name="shadow-id" value="@Model["shadow"].GetId()">
+      <input type="hidden" name="question-id" value="@Model["question"].GetId()">
       <button id="reply" type="submit" name="button">ReP<span class="inverse">L</span>y</button>
     </form>
   </body>
 </html>
-
-
-<!---////Original Code////---->
-<!-- <img src="@Model["shadow"].GetImg()" alt="@Model["shadow"].GetShadowName()">
-<h2>@Model["shadow"].GetShadowName()</h2>
-<br>
-<h3>@Model["shadow"].GetIntro()</h3>
-<h4>@Model["question"].GetQuestionName()</h4>
-<br>
-<form>
-</select>
-<select name = "answer-id">
-@foreach(var answer in @Model["answers"])
-{
-<option value="@answer.GetId()">@answer.GetAnswerName()</option>
-}
-<input type="hidden" name="shadow-id" value="@Model["shadow"].GetId()">
-</select>
-<button type="submit">Submit</button>
-</form> -->
-<!---////Original Code////---->
