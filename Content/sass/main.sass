@@ -124,24 +124,100 @@ select
   height: 600px
   position: absolute
   bottom: 0
-  left: 45%
+  left: 25%
   -webkit-filter: drop-shadow(5px 5px 0px red)
   filter: drop-shadow(5px 5px 0px red)
 
-h2
+.speech
+  background-image: url('../img/speech.png')
+  background-repeat: no-repeat
+  background-position: center
+  background-size: contain
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  height: 600px
+  width: 600px
+  position: absolute
+  bottom: 40%
+  left: 8%
+  padding: 25px
+  font-family: 'Yanone Kaffeesatz'
+  font-size: 26px
+
+.name
   font-family: 'earwig'
   font-size: 100px
   color: black
   text-shadow: 2px 2px 0px #fe0000
   letter-spacing: -10px
+  position: absolute
+  bottom: 0
+  left: 10%
 
-h3
-  font-family: 'Yanone Kaffeesatz'
+.intro
+  width: 350px
+  font-size: 26px
 
-h4
+.question
+  margin-bottom: 150px
+  width: 350px
+  margin-top: 0
+
+.radio
+  float: right
   font-family: 'Yanone Kaffeesatz'
+  background-image: url('../img/pow.png')
+  background-repeat: no-repeat
+  background-position: center
+  background-size: contain
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: flex-start
+  width: 400px
+  height: 300px
+  -webkit-filter: drop-shadow(5px 5px 8px black)
+  filter: drop-shadow(5px 5px 8px black)
+  label
+    width: 200px
+    margin-left: 100px
+    font-size: 24px
+
+.timid
+  position: absolute
+  right: 1%
+  top: 35%
+  transform: rotate(30deg)
+
+.gloomy
+  position: absolute
+  right: 5%
+  top: 5%
+  transform: rotateZ(20deg)
+
+.irritable
+  position: absolute
+  top: 20%
+  right: 20%
+  transform: rotateZ(-20deg)
+
+.upbeat
+  position: absolute
+  bottom: 25%
+  right: 15%
+  transform: rotateZ(5deg)
+
+
+
 
 #reply
+  position: absolute
+  bottom: 5%
+  right: 10%
+  transform: rotateZ(-5deg)
+
   @extend #play
   &:hover
     &::after
