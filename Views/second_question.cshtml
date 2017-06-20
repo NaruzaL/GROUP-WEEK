@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../Content/css/main.css">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body class="second-question">
+    <img class="shadow" src="@Model["shadow"].GetImg()" alt="@Model["shadow"].GetShadowName()">
+    <h2>@Model["shadow"].GetShadowName()</h2>
+    <h3>@Model["shadow"].GetIntro()</h3>
+    <h4>@Model["question"].GetQuestionName()</h4>
+    <form action="/second_question/result/@Model["shadow"].GetId()" method="post">
+        @foreach(var answer in @Model["answers"])
+        {
+          <input type="radio" name="answer-id" value="@answer.GetId()">@answer.GetAnswerName()
+        }
+      </select>
+      <input type="hidden" name="shadow-id" value="@Model["shadow"].GetId()">
+      <button id="reply" type="submit" name="button">ReP<span class="inverse">L</span>y</button>
+    </form>
+  </body>
+</html>

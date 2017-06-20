@@ -79,23 +79,24 @@ namespace PersonaFive
       Assert.Equal(testList, result);
     }
 
-    // [Fact]
-    //   public void Test_GetQuestion_RetrievesAllQuestionsWithAnswers()
-    //   {
-    //     Answer testAnswer = new Answer("sentence answer", "gloomy");
-    //     testAnswer.Save();
-    //
-    //     Question firstQuestion = new Question("blah blah blah", "gloomy", testAnswer.GetId());
-    //     firstQuestion.Save();
-    //     Question secondQuestion = new Question("blah blah", "gloomy", testAnswer.GetId());
-    //     secondQuestion.Save();
-    //
-    //
-    //     List<Question> testQuestionList = new List<Question> {firstQuestion, secondQuestion};
-    //     List<Question> resultQuestionList = testAnswer.GetQuestions();
-    //
-    //     Assert.Equal(testQuestionList, resultQuestionList);
-    //   }
+    [Fact]
+      public void Test_GetQuestion_RetrievesAllQuestionsWithAnswers()
+      {
+        Answer testAnswer = new Answer("sentence answer", "gloomy");
+        testAnswer.Save();
+
+        Question firstQuestion = new Question("blah blah blah", "gloomy");
+        firstQuestion.Save();
+        Question secondQuestion = new Question("blah blah", "gloomy");
+        secondQuestion.Save();
+
+        testAnswer.AddQuestion(firstQuestion);
+        testAnswer.AddQuestion(secondQuestion);
+        List<Question> testQuestionList = new List<Question> {firstQuestion, secondQuestion};
+        List<Question> resultQuestionList = testAnswer.GetQuestions();
+
+        Assert.Equal(testQuestionList, resultQuestionList);
+      }
 
     public void Dispose()
     {

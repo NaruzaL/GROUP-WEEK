@@ -1,4 +1,7 @@
-<h2>@Model["shadow"].GetName()</h2>
+
+<img src="@Model["shadow"].GetImg()" alt="pic of @Model["shadow"].GetShadowName()">
+
+<h2>@Model["shadow"].GetShadowName()</h2>
 
 @if (@Model["answer"].GetAnswerType() == @Model["shadow"].GetShadowType())
 {

@@ -20,16 +20,38 @@ namespace PersonaFive
         Shadow randomShadow = allShadows[i-1];
 
         List<Answer> shadowAnswers = randomShadow.GetAnswers();
-
-        List<Question> answerQuestions = shadowAnswers[0].GetQuestions();
+        int n = new Random().Next(1, shadowAnswers.Count + 1);
+        Answer shadowAnswer = shadowAnswers[n-1];
+        List<Question> answerQuestions = shadowAnswer.GetQuestions();
         int j = new Random().Next(1, answerQuestions.Count + 1);
-        Question newQuestion = answerQuestions[j-1];
+        Question answerQuestion = answerQuestions[j -1];
 
-        List<Answer> newAnswers = newQuestion.GetAnswers();
+
+        List<Answer> newAnswers = answerQuestion.GetAnswers();
+
+        List<Answer> leftOverAnswers = new List<Answer>{};
+        List<Answer> questionAnswers = new List<Answer>{};
+        foreach (var answer in newAnswers)
+        {
+          string shadowType = randomShadow.GetShadowType();
+          string answerType = answer.GetAnswerType();
+          if (answerType == shadowType)
+          {
+            questionAnswers.Add(answer);
+          }
+          else
+          {
+            leftOverAnswers.Add(answer);
+          }
+        }
+        int a = new Random().Next(1, leftOverAnswers.Count + 1);
+        questionAnswers.Add(leftOverAnswers[a-1]);
+        int b = new Random().Next(1, leftOverAnswers.Count + 1);
+        questionAnswers.Add(leftOverAnswers[b-1]);
 
         model.Add("shadow", randomShadow);
-        model.Add("answers", newAnswers);
-        model.Add("question", newQuestion);
+        model.Add("answers", questionAnswers);
+        model.Add("question", answerQuestion);
         return View["first_question.cshtml", model];
       };
 
@@ -44,19 +66,42 @@ namespace PersonaFive
 
       Get["second_question/ask/{id}"] = parameters => {
         Dictionary<string, object> model = new Dictionary<string, object>{};
-        Shadow sameShadow = Shadow.Find(Request.Form["shadow-id"]);
+        Shadow sameShadow = Shadow.Find(parameters.id);
 
         List<Answer> shadowAnswers = sameShadow.GetAnswers();
-        List<Question> answerQuestions = shadowAnswers[0].GetQuestions();
+        int n = new Random().Next(1, shadowAnswers.Count + 1);
+        Answer shadowAnswer = shadowAnswers[n-1];
+        List<Question> answerQuestions = shadowAnswer.GetQuestions();
         int j = new Random().Next(1, answerQuestions.Count + 1);
-        Question newQuestion = answerQuestions[j-1];
+        Question answerQuestion = answerQuestions[j -1];
 
-        List<Answer> newAnswers = newQuestion.GetAnswers();
+
+        List<Answer> newAnswers = answerQuestion.GetAnswers();
+
+        List<Answer> leftOverAnswers = new List<Answer>{};
+        List<Answer> questionAnswers = new List<Answer>{};
+        foreach (var answer in newAnswers)
+        {
+          string shadowType = sameShadow.GetShadowType();
+          string answerType = answer.GetAnswerType();
+          if (answerType == shadowType)
+          {
+            questionAnswers.Add(answer);
+          }
+          else
+          {
+            leftOverAnswers.Add(answer);
+          }
+        }
+        int a = new Random().Next(1, leftOverAnswers.Count + 1);
+        questionAnswers.Add(leftOverAnswers[a-1]);
+        int b = new Random().Next(1, leftOverAnswers.Count + 1);
+        questionAnswers.Add(leftOverAnswers[b-1]);
 
         model.Add("shadow", sameShadow);
-        model.Add("answers", newAnswers);
-        model.Add("question", newQuestion);
-        return View["first_question.cshtml", model];
+        model.Add("answers", questionAnswers);
+        model.Add("question", answerQuestion);
+        return View["second_question.cshtml", model];
       };
 
       Post["/second_question/result/{id}"] = parameters => {
@@ -69,7 +114,7 @@ namespace PersonaFive
       };
 
       Get["/capture/{id}"] = parameters => {
-        Shadow capturedShadow = Shadow.Find(Request.Form["shadow-id"]);
+        Shadow capturedShadow = Shadow.Find(parameters.id);
         return View["capture.cshtml", capturedShadow];
       };
 
