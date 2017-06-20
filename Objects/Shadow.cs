@@ -246,7 +246,8 @@ namespace PersonaFive.Objects
       }
       return answers;
     }
-    // public Dictionary<object> randomShadow(){
+
+    // public Dictionary<string,object> RandomShadow(){
     //   Dictionary<string, object> model = new Dictionary<string, object>{};
     //   List<Shadow> allShadows = Shadow.GetAll();
     //   int i = new Random().Next(1, allShadows.Count + 1 );

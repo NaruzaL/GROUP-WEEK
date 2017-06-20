@@ -82,6 +82,31 @@ namespace PersonaFive
     // [Fact]
     // public void Test_RandomShadow_ReturnsRandomShadowAndQuestionAndAnswers()
     // {
+    //   Shadow testShadow = new Shadow("Boogie man", "irritable", "intro sentence", "/Content/img/shadow.png");
+    //   testShadow.Save();
+    //   Shadow testShadow2 = new Shadow("test2", "upbeat", "intro sentence 2", "filepath 2");
+    //   testShadow2.Save();
+    //   Shadow testShadow3 = new Shadow("test3", "gloomy", "intro sentence3", "filepath 3");
+    //
+    //   Answer testAnswer = new Answer("sentence answer", "gloomy");
+    //   testAnswer.Save();
+    //   Answer testAnswer2 = new Answer("sentece two", "irritable");
+    //   testAnswer2.Save();
+    //   Answer testAnswer3 = new Answer("senetence", "upbeat");
+    //
+    //   testShadow.AddAnswer(testAnswer);
+    //   testShadow.AddAnswer(testAnswer2);
+    //
+    //   Question testQuestion = new Question ("question", "irritable", testAnswer2.GetId());
+    //   testQuestion.Save();
+    //   Question testQuestion2 = new Question("question2", "gloomy", testAnswer.GetId());
+    //   testQuestion2.Save();
+    //   Question testQuestion3 = new Question("question3", "upbeat", testAnswer3.GetId());
+    //   testQuestion3.Save();
+    //
+    //   Dicitonary<string,object> model = RandomShadow();
+    //   Assert.Equal(model, model);
+    //   Console.WriteLine(model);
     //
     // }
 
