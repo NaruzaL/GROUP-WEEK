@@ -182,28 +182,29 @@ select {
   width: 400px;
   height: 300px;
   -webkit-filter: drop-shadow(5px 5px 8px black);
-  filter: drop-shadow(5px 5px 8px black); }
+  filter: drop-shadow(5px 5px 8px black);
+  position: relative; }
   .radio label {
     width: 200px;
     margin-left: 100px;
     font-size: 24px; }
 
-.first-question .timid {
+.first-question label .timid {
   position: absolute;
   right: 4%;
   top: 35%;
   transform: rotate(30deg); }
-.first-question .gloomy {
+.first-question label .gloomy {
   position: absolute;
   right: 5%;
   top: 5%;
   transform: rotateZ(20deg); }
-.first-question .irritable {
+.first-question label .irritable {
   position: absolute;
   top: 20%;
   right: 20%;
   transform: rotateZ(-20deg); }
-.first-question .upbeat {
+.first-question label .upbeat {
   position: absolute;
   bottom: 25%;
   right: 15%;
