@@ -116,7 +116,7 @@ select {
   select .option {
     background-color: red; }
 
-.first-question {
+.first-question, .second-question {
   height: 100vh;
   background-image: url("../img/street.png");
   background-repeat: no-repeat;
@@ -188,25 +188,43 @@ select {
     margin-left: 100px;
     font-size: 24px; }
 
-.timid {
+.first-question .timid {
   position: absolute;
-  right: 1%;
+  right: 4%;
   top: 35%;
   transform: rotate(30deg); }
-
-.gloomy {
+.first-question .gloomy {
   position: absolute;
   right: 5%;
   top: 5%;
   transform: rotateZ(20deg); }
-
-.irritable {
+.first-question .irritable {
   position: absolute;
   top: 20%;
   right: 20%;
   transform: rotateZ(-20deg); }
+.first-question .upbeat {
+  position: absolute;
+  bottom: 25%;
+  right: 15%;
+  transform: rotateZ(5deg); }
 
-.upbeat {
+.second-question .irritable {
+  position: absolute;
+  right: 4%;
+  top: 35%;
+  transform: rotate(30deg); }
+.second-question .timid {
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  transform: rotateZ(20deg); }
+.second-question .upbeat {
+  position: absolute;
+  top: 20%;
+  right: 20%;
+  transform: rotateZ(-20deg); }
+.second-question .gloomy {
   position: absolute;
   bottom: 25%;
   right: 15%;

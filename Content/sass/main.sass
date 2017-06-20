@@ -113,7 +113,7 @@ select
   .option
     background-color: red
 
-.first-question
+.first-question, .second-question
   height: 100vh
   background-image: url('../img/street.png')
   background-repeat: no-repeat
@@ -185,30 +185,49 @@ select
     margin-left: 100px
     font-size: 24px
 
-.timid
-  position: absolute
-  right: 1%
-  top: 35%
-  transform: rotate(30deg)
+.first-question
+  .timid
+    position: absolute
+    right: 4%
+    top: 35%
+    transform: rotate(30deg)
+  .gloomy
+    position: absolute
+    right: 5%
+    top: 5%
+    transform: rotateZ(20deg)
+  .irritable
+    position: absolute
+    top: 20%
+    right: 20%
+    transform: rotateZ(-20deg)
+  .upbeat
+    position: absolute
+    bottom: 25%
+    right: 15%
+    transform: rotateZ(5deg)
 
-.gloomy
-  position: absolute
-  right: 5%
-  top: 5%
-  transform: rotateZ(20deg)
-
-.irritable
-  position: absolute
-  top: 20%
-  right: 20%
-  transform: rotateZ(-20deg)
-
-.upbeat
-  position: absolute
-  bottom: 25%
-  right: 15%
-  transform: rotateZ(5deg)
-
+.second-question
+  .irritable
+    position: absolute
+    right: 4%
+    top: 35%
+    transform: rotate(30deg)
+  .timid
+    position: absolute
+    right: 5%
+    top: 5%
+    transform: rotateZ(20deg)
+  .upbeat
+    position: absolute
+    top: 20%
+    right: 20%
+    transform: rotateZ(-20deg)
+  .gloomy
+    position: absolute
+    bottom: 25%
+    right: 15%
+    transform: rotateZ(5deg)
 
 
 
