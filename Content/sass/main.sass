@@ -112,16 +112,24 @@ select
   height: 200px
   font-family: 'earwig'
   font-size: 40px
-  option
-    font-family: 'earwig'
-    font-size: 50px
+  .option
+    background-color: red
 
 .first-question
   height: 100vh
-  background-image: url('../img/menu.jpg')
+  background-image: url('../img/street.png')
   background-repeat: no-repeat
   background-position: center
   background-size: cover
 
 .shadow
   height: 400px
+  position: absolute
+  bottom: 0
+  left: 50%
+
+#reply
+  @extend #play
+  &:hover
+    &::after
+      width: 200px
