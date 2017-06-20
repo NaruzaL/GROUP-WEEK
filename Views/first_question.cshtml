@@ -6,13 +6,13 @@
 <h4>@Model["question"].GetQuestionName()</h4>
 <br>
 <form>
+<input type="hidden" name="shadow-id" value="@Model["shadow"].GetId()">
 </select>
  <select name = "answer-id">
    @foreach(var answer in @Model["answers"])
    {
      <option value="@answer.GetId()">@answer.GetAnswerName()</option>
    }
-   <input type="hidden" name="shadow-id" value="@Model["shadow"].GetId()">
  </select>
  <button type="submit">Submit</button>
 </form>
