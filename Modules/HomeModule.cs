@@ -61,8 +61,8 @@ namespace PersonaFive
         Shadow randomShadow = Shadow.Find(Request.Form["shadow-id"]);
         Answer selectedAnswer = Answer.Find(Request.Form["answer-id"]);
         Question firstQuestion = Question.Find(Request.Form["question-id"]);
-        model.Add("question1", firstQuestion);
         model.Add("shadow", randomShadow);
+        model.Add("question1", firstQuestion);
         model.Add("answer", selectedAnswer);
         return View["result.cshtml", model];
       };
