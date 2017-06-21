@@ -67,7 +67,7 @@ namespace PersonaFive
         return View["result.cshtml", model];
       };
 
-      Get["second_question/ask/{id}"] = parameters => {
+      Get["second_question/ask"] = _ => {
         Dictionary<string, object> model = new Dictionary<string, object>{};
         Shadow sameShadow = Shadow.Find(Request.Query["shadow-id"]);
         Question question1 = Question.Find(Request.Query["question-id"]);
@@ -76,13 +76,16 @@ namespace PersonaFive
         int n = new Random().Next(1, shadowAnswers.Count + 1);
         Answer shadowAnswer = shadowAnswers[n-1];
         List<Question> answerQuestions = shadowAnswer.GetQuestions();
-        foreach(var question in answerQuestions)
+        lock (answerQuestions)
+        {
+          for(int q = 0; q < answerQuestions.Count; q++)
           {
-            if(question == question1)
+            if(answerQuestions[q].GetQuestionName() == question1.GetQuestionName())
             {
-              answerQuestions.Remove(question);
+              answerQuestions.Remove(answerQuestions[q]);
             }
           }
+        }
 
         int j = new Random().Next(1, answerQuestions.Count + 1);
         Question answerQuestion = answerQuestions[j -1];
@@ -118,7 +121,7 @@ namespace PersonaFive
 
       Post["/second_question/result/{id}"] = parameters => {
         Dictionary<string,object> model = new Dictionary<string,object>{};
-        Shadow randomShadow = Shadow.Find(Request.Form["shadow-id"]);
+        Shadow randomShadow = Shadow.Find(parameters.id);
         Answer selectedAnswer = Answer.Find(Request.Form["answer-id"]);
         model.Add("shadow", randomShadow);
         model.Add("answer", selectedAnswer);

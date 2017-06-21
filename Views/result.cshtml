@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700" rel="stylesheet">
-    <link rel="stylesheet" href="../Content/css/main.css">
-    <meta charset="utf-8">
-    <title></title>
-  </head>
+@{
+  Layout="Shared/_Layout.cshtml";
+}
+
   <body class="result">
     <img class="shadow" src="/result/@Model["shadow"].GetImg()" alt="@Model["shadow"].GetShadowName()">
 
@@ -14,7 +10,7 @@
     {
       <h4>Your answer pleases me</h4>
 
-      <form action="/second_question/ask/@Model["shadow"].GetId()" >
+      <form action="/second_question/ask" >
         <input type="hidden" class= "form-control" name="question-id" value="@Model["question1"].GetId()">
         <input type="hidden" class= "form-control" name="shadow-id" value="@Model["shadow"].GetId()">
         <button type="submit" name="button">Next Question</button>
@@ -26,4 +22,3 @@
       <a href="/">Try again</a>
     }
   </body>
-</html>
