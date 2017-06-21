@@ -9,6 +9,9 @@
   @media screen and (max-width: 1050px)
     background-image: url('../img/mobile-background.jpg')
 
+.first-question
+  overflow-y: hidden
+  overflow-x: hidden
 
 .container
   height: 100vh
@@ -102,16 +105,7 @@
   100%
     transform: skew(42deg) rotate(-20deg) scale(1.6)
 
-/// First Question ///
-
-select
-  appearance: none
-  width: 400px
-  height: 200px
-  font-family: 'earwig'
-  font-size: 40px
-  .option
-    background-color: red
+/// Questions ///
 
 .first-question, .second-question
   height: 100vh
@@ -123,10 +117,20 @@ select
 .shadow
   height: 600px
   position: absolute
-  bottom: 0
+  bottom: 20px
   left: 25%
   -webkit-filter: drop-shadow(5px 5px 0px red)
   filter: drop-shadow(5px 5px 0px red)
+
+.first-question, .second-question
+  .shadow
+    animation: character-appear 1.5s
+
+@keyframes character-appear
+  0%
+    transform: translateY(500px)
+  100%
+    transform: translateY(0px)
 
 .speech
   background-image: url('../img/speech.png')
@@ -146,6 +150,20 @@ select
   font-family: 'Yanone Kaffeesatz'
   font-size: 26px
 
+.first-question, .second-question
+  .speech
+    animation: speech-appear 2.5s
+
+@keyframes speech-appear
+  0%
+    transform: scale(0)
+    transform-origin: bottom right
+  50%
+    transform: scale(0)
+    transform-origin: bottom right
+  100%
+    transform: scale(1)
+
 .name
   font-family: 'earwig'
   font-size: 100px
@@ -155,6 +173,20 @@ select
   position: absolute
   bottom: 0
   left: 10%
+
+.first-question, .second-question
+  .name
+    animation: name-appear 1.5s
+
+@keyframes name-appear
+  0%
+    transform: translateX(-800px)
+  70%
+    transform: translateX(-800px)
+  80%
+    transform: translateX(200px) rotateZ(-20deg)
+  100%
+    transform: translateX(0px)
 
 .intro
   width: 350px
@@ -190,22 +222,65 @@ select
     position: absolute
     right: 4%
     top: 35%
-    transform: rotate(30deg)
+    transform: scale(0)
+    animation: timid-appear 1s 1s forwards
   .gloomy
     position: absolute
     right: 5%
     top: 5%
-    transform: rotateZ(20deg)
+    transform: scale(0)
+    animation: gloomy-appear 1.5s 1s forwards
   .irritable
     position: absolute
     top: 20%
     right: 20%
-    transform: rotateZ(-20deg)
+    transform: scale(0)
+    animation: irritable-appear 2s 1s forwards
   .upbeat
     position: absolute
     bottom: 25%
     right: 15%
-    transform: rotateZ(5deg)
+    transform: scale(0)
+    animation: upbeat-appear 2.5s 1s forwards
+
+@keyframes timid-appear
+  0%
+    transform: scale(0) rotate(7deg)
+
+  50%
+    transform: scale(1) rotate(15deg)
+  100%
+    transform: scale(1) rotate(30deg)
+
+@keyframes gloomy-appear
+  0%
+    transform: scale(0) rotate(5deg)
+  50%
+    transform: scale(1) rotate(10deg)
+  100%
+    transform: scale(1) rotate(20deg)
+
+@keyframes irritable-appear
+  0%
+    transform: scale(0) rotate(-5deg)
+  50%
+    transform: scale(1) rotate(-10deg)
+  100%
+    transform: scale(1) rotate(-20deg)
+
+@keyframes upbeat-appear
+  0%
+    transform: scale(0) rotate(1deg)
+  50%
+    transform: scale(1) rotate(2.5deg)
+  100%
+    transform: scale(1) rotate(5deg)
+
+@keyframes wiggle
+  0%
+    transform: rotateZ(-20deg)
+  100%
+    transform: rotateZ(20deg)
 
 .second-question
   .irritable
@@ -230,14 +305,38 @@ select
     transform: rotateZ(5deg)
 
 
-
 #reply
   position: absolute
   bottom: 5%
   right: 10%
   transform: rotateZ(-5deg)
-
   @extend #play
   &:hover
     &::after
       width: 200px
+
+/// Results ///
+
+.result
+  height: 100vh
+  background-image: url('../img/street.png')
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
+
+.shadow-response
+  font-size: 50px
+  margin-bottom: 200px
+
+#result-reply
+  transform: rotateZ(20deg)
+  position: absolute
+  top: 280px
+  right: 450px
+  @extend #play
+  &:hover
+    &::after
+      left: 50px
+      top: 50px
+      height: 170px
+      width: 230px
