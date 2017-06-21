@@ -1,19 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700" rel="stylesheet">
+    <link rel="stylesheet" href="../Content/css/main.css">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <img src="@Model["shadow"].GetImg()" alt="pic of @Model["shadow"].GetShadowName()">
 
-<img src="@Model["shadow"].GetImg()" alt="pic of @Model["shadow"].GetShadowName()">
+    <h2>@Model["shadow"].GetShadowName()</h2>
+    @if (@Model["answer"].GetAnswerType() == @Model["shadow"].GetShadowType())
+    {
+      <h4>Your answer pleases me</h4>
 
-<h2>@Model["shadow"].GetShadowName()</h2>
-@if (@Model["answer"].GetAnswerType() == @Model["shadow"].GetShadowType())
-{
-  <h4>Your answer pleases me</h4>
-
-  <form action="/second_question/ask/@Model["shadow"].GetId()" >
-  <input type="hidden" class= "form-control" name="question-id" value="@Model["question1"].GetId()">
-  <input type="hidden" class= "form-control" name="shadow-id" value="@Model["shadow"].GetId()">
-  <button type="submit" name="button">Next Question</button>
-  </form>
-}
-else
-{
-  <h4>DIE!!!</h4>
-  <a href="/">Try again</a>
-}
+      <form action="/second_question/ask/@Model["shadow"].GetId()" >
+        <input type="hidden" class= "form-control" name="question-id" value="@Model["question1"].GetId()">
+        <input type="hidden" class= "form-control" name="shadow-id" value="@Model["shadow"].GetId()">
+        <button type="submit" name="button">Next Question</button>
+      </form>
+    }
+    else
+    {
+      <h4>DIE!!!</h4>
+      <a href="/">Try again</a>
+    }
+  </body>
+</html>

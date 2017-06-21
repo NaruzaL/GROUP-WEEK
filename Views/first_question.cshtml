@@ -17,11 +17,38 @@
     <form action="/first_question/result/@Model["shadow"].GetId()" method="post">
         @foreach(var answer in @Model["answers"])
         {
-          <div class="@Model["answers"].GetType()">
-            <label>
-            <input class="@Model["answers"].GetType()" type="radio" name="answer-id" value="@answer.GetId()">@answer.GetAnswerName()
-            </label>
-          </div>
+          @if(answer.GetAnswerType() == "gloomy")
+          {
+            <div class="radio gloomy">
+              <label>
+                <input class="@Model["answers"].GetType()" type="radio" name="answer-id" value="@answer.GetId()">@answer.GetAnswerName()
+              </label>
+            </div>
+          }
+          @if(answer.GetAnswerType() == "timid")
+          {
+            <div class="radio timid">
+              <label>
+                <input class="@Model["answers"].GetType()" type="radio" name="answer-id" value="@answer.GetId()">@answer.GetAnswerName()
+              </label>
+            </div>
+          }
+          @if(answer.GetAnswerType() == "irritable")
+          {
+            <div class="radio irritable">
+              <label>
+                <input class="@Model["answers"].GetType()" type="radio" name="answer-id" value="@answer.GetId()">@answer.GetAnswerName()
+              </label>
+            </div>
+          }
+          @if(answer.GetAnswerType() == "upbeat")
+          {
+            <div class="radio upbeat">
+              <label>
+                <input class="@Model["answers"].GetType()" type="radio" name="answer-id" value="@answer.GetId()">@answer.GetAnswerName()
+              </label>
+            </div>
+          }
         }
       <input type="hidden" name="shadow-id" value="@Model["shadow"].GetId()">
       <input type="hidden" name="question-id" value="@Model["question"].GetId()">
@@ -29,48 +56,3 @@
     </form>
   </body>
 </html>
-
-@* <!DOCTYPE html>
-<html>
-  <head>
-    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700" rel="stylesheet">
-    <link rel="stylesheet" href="../Content/css/main.css">
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body class="first-question">
-    <img class="shadow" src="../Content/img/carmen.png">
-    <h2 class="name">CA<span class="inverse">r</span>me<span class="inverse">n</span></h2>
-    <div class="speech">
-      <h3 class="intro">Hey there easy rider!  There's nothing like the thrill of cruising down a windy road all to yourself, don't you agree? Hop on and let's go for a ride!</h3>
-      <h4 class="question">If you were to take me on a date, where would we go?!</h4>
-    </div>
-    <form action="/first_question/result/@Model["shadow"].GetId()" method="post">
-      <div class="radio irritable">
-      <label>
-        <input type="radio" name="flavor" value="chocolate" checked>
-        Good food.
-      </label>
-      </div>
-      <div class="radio gloomy">
-      <label>
-        <input type="radio" name="flavor" value="vanilla">
-        Salad, it's good for me.
-      </label>
-      </div>
-      <div class="radio timid">
-      <label>
-        <input type="radio" name="flavor" value="cookiesandcream">
-        Cruelty free locally sourced macaroons.
-      </label>
-      </div>
-      <div class="radio upbeat">
-        <label>
-          <input type="radio" name="flavor" value="whatever">
-          Of course, I'm an upstanding citizen!
-        </label>
-      </div>
-      <button id="reply" type="submit" name="button">ReP<span class="inverse">L</span>y</button>
-    </form>
-  </body>
-</html> *@
