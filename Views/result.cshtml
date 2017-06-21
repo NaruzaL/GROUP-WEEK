@@ -9,20 +9,20 @@
     @if (@Model["answer"].GetAnswerType() == @Model["shadow"].GetShadowType())
     {
       <div class="speech">
-        <h4 class="shadow-response">Your answer pleases me</h4>
+        <h4 class="shadow-response">Your answer pleases me.</h4>
       </div>
 
       <form action="/second_question/ask" >
         <input type="hidden" class= "form-control" name="question-id" value="@Model["question1"].GetId()">
         <input type="hidden" class= "form-control" name="shadow-id" value="@Model["shadow"].GetId()">
-        <button type="submit" name="button" id="result-reply">Next Question</button>
+        <button type="submit" name="button" id="result-reply">Ne<span class="inverse">X</span>t Q<span class="inverse">u</span>eSti<span class="inverse">O</span>n</button>
       </form>
     }
     else
     {
       <div class="speech">
-        <h4 class="shadow-response">DIE!!!</h4>
+        <h4 class="shadow-response">What?! That's a strange answer...</h4>
       </div>
-      <a href="/" id="result-play">Try again</a>
+      <a href="/" id="result-play">T<span class="inverse">R</span>y A<span class="inverse">G</span>ai<span class="inverse">N</span></a>
     }
   </body>

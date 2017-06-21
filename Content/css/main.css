@@ -21,7 +21,7 @@
   display: flex;
   justify-content: center; }
 
-#play, #reply, #result-reply, #result-play {
+#play, #reply, #result-reply, #result-play, #victory {
   text-decoration: none;
   color: black;
   font-family: "earwig";
@@ -35,9 +35,9 @@
   text-shadow: 2px 2px 0px #fe0000;
   letter-spacing: -10px;
   position: relative; }
-  #play:hover, #reply:hover, #result-reply:hover, #result-play:hover {
+  #play:hover, #reply:hover, #result-reply:hover, #result-play:hover, #victory:hover {
     transform: scale(1.5, 1.5) rotateZ(-20deg); }
-    #play:hover::after, #reply:hover::after, #result-reply:hover::after, #result-play:hover::after {
+    #play:hover::after, #reply:hover::after, #result-reply:hover::after, #result-play:hover::after, #victory:hover::after {
       z-index: -1;
       left: 50px;
       top: 50px;
@@ -49,9 +49,9 @@
       opacity: 0.7;
       animation: jigs 0.5s both infinite;
       animation-direction: alternate; }
-  #play:focus, #reply:focus, #result-reply:focus, #result-play:focus {
+  #play:focus, #reply:focus, #result-reply:focus, #result-play:focus, #victory:focus {
     outline: none; }
-  #play:active, #reply:active, #result-reply:active, #result-play:active {
+  #play:active, #reply:active, #result-reply:active, #result-play:active, #victory:active {
     outline: none; }
 
 #title1, #title2 {
@@ -358,5 +358,16 @@
     top: 50px;
     height: 170px;
     width: 170px; }
+
+#victory {
+  transform: rotateZ(20deg);
+  position: absolute;
+  top: 350px;
+  right: 490px; }
+  #victory:hover::after {
+    left: 50px;
+    top: 40px;
+    height: 100px;
+    width: 310px; }
 
 /*# sourceMappingURL=main.css.map */
