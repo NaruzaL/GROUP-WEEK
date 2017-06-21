@@ -78,7 +78,7 @@ namespace PersonaFive
         List<Question> answerQuestions = shadowAnswer.GetQuestions();
         foreach(var question in answerQuestions)
           {
-            if(question == question1)
+            if(question.GetQuestionName() == question1.GetQuestionName())
             {
               answerQuestions.Remove(question);
             }
