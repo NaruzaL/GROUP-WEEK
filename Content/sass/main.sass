@@ -127,6 +127,13 @@ select
   left: 25%
   -webkit-filter: drop-shadow(5px 5px 0px red)
   filter: drop-shadow(5px 5px 0px red)
+  animation: character-appear 1.5s
+
+@keyframes character-appear
+  0%
+    transform: translateY(500px)
+  100%
+    transform: translateY(0px)
 
 .speech
   background-image: url('../img/speech.png')
@@ -145,6 +152,17 @@ select
   padding: 25px
   font-family: 'Yanone Kaffeesatz'
   font-size: 26px
+  animation: speech-appear 2.5s
+
+@keyframes speech-appear
+  0%
+    transform: scale(0)
+    transform-origin: bottom right
+  50%
+    transform: scale(0)
+    transform-origin: bottom right
+  100%
+    transform: scale(1)
 
 .name
   font-family: 'earwig'
@@ -155,6 +173,17 @@ select
   position: absolute
   bottom: 0
   left: 10%
+  animation: name-appear 1.5s
+
+@keyframes name-appear
+  0%
+    transform: translateX(-800px)
+  70%
+    transform: translateX(-800px)
+  80%
+    transform: translateX(200px)
+  100%
+    transform: translateX(0px)
 
 .intro
   width: 350px
@@ -228,7 +257,6 @@ select
     bottom: 25%
     right: 15%
     transform: rotateZ(5deg)
-
 
 
 #reply
