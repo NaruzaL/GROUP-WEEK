@@ -7,9 +7,9 @@ SELECT * FROM answers
 SELECT * FROM questions
 SELECT * FROM questions_answers
 
-
-USE persona_five
-
+CREATE persona_five_test
+USE persona_five_test
+CREATE TABLE player(id INT IDENTITY(1,1) name VARCHAR(255), select bit, image VARCHAR(255))
 CREATE TABLE shadows(id INT IDENTITY(1,1), name VARCHAR(255), type VARCHAR(255), intro VARCHAR(255), img VARCHAR(255))
 CREATE TABLE answers(id INT IDENTITY(1,1), answer VARCHAR(255), type VARCHAR(255))
 CREATE TABLE questions(id INT IDENTITY(1,1), question VARCHAR(255), type VARCHAR(255))
@@ -341,7 +341,7 @@ irritable - I haven't thought about it,
 n/a - ugh, you talk too loud
 question: Me am going to haunt you for the rest of your life. Me always right behind you
 anwers: n/a - that would be troublesome,
-n/a - I could carry that weight, 
+n/a - I could carry that weight,
 irritable - I wouldn't like that.
 question: Hey human, you look really young. You still at age where you depend on others, huh? you go back to your mother's arms. You need to take nap now.
 ansers: n/a - I'm not that young,
