@@ -1,5 +1,10 @@
 @import 'base/typography'
 
+.first-letter-red
+  &::first-letter
+    color: #fe0000
+    text-shadow: 6px 6px 0px black
+
 .landing-page
   height: 100vh
   background-image: url('../img/background3.jpg')
@@ -391,3 +396,61 @@
       top: 40px
       height: 100px
       width: 310px
+
+//// capture ///////
+@keyframes rocking
+  0%
+    transform: rotateZ(5deg)
+  50%
+    transform: rotateZ(-5deg)
+  100%
+    transform: rotateZ(5deg)
+
+
+
+.capture
+  position: relative
+  height: 100vh
+  background-image: url('../img/menu.jpg')
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
+  overflow: hidden
+  .shadow
+    position: absolute
+    top: 25%
+    left: 32%
+    transform: rotateZ(20deg)
+    animation: rocking 3s infinite
+  .name
+    text-align: center
+    position: absolute
+    left: 5%
+    top: 10%
+    transform: rotateZ(-20deg)
+    &::after
+      z-index: -1
+      left: 50px
+      top: 50px
+      position: absolute
+      content: ''
+      height: 180px
+      width: 700px
+      background-color: white
+      opacity: .7
+      animation: jigs .5s both infinite
+      animation-direction: alternate
+  #back
+    position: absolute
+    left: 60%
+    bottom: 8%
+    @extend #play
+    transform: rotateZ(20deg)
+    width: 450px
+    &:hover
+      transform: scale(1.5,1.5) rotateZ(20deg)
+      &::after
+        left: 50px
+        top: 40px
+        height: 80px
+        width: 310px

@@ -4,7 +4,7 @@
 
   <body class="second-question">
     <img class="shadow" src="/ask/@Model["shadow"].GetImg()" alt="@Model["shadow"].GetShadowName()">
-    <h2 class="name">@Model["shadow"].GetShadowName()</h2>
+    <h2 class="name first-letter-red">@Model["shadow"].GetShadowName()</h2>
     <div class="speech">
       <h3 class="intro">@Model["shadow"].GetIntro()</h3>
       <h4 class="question">@Model["question"].GetQuestionName()</h4>
@@ -47,4 +47,7 @@
         }
       <button id="reply" type="submit" name="button">ReP<span class="inverse">L</span>y</button>
     </form>
+    <audio src="../Content/music/layer-cake.mp3" autoplay>
+    <embed src="../Content/music/layer-cake.mp3" width="180" height="90" hidden="true" />
+    </audio>
   </body>

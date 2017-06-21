@@ -5,7 +5,7 @@
   <body class="result">
   <img class="shadow" src="/result/@Model["shadow"].GetImg()" alt="pic of @Model["shadow"].GetShadowName()">
 
-  <h2 class="name">@Model["shadow"].GetShadowName()</h2>
+  <h2 class="name first-letter-red">@Model["shadow"].GetShadowName()</h2>
 
   @if (@Model["answer"].GetAnswerType() == @Model["shadow"].GetShadowType())
   {
@@ -22,4 +22,7 @@
     <a id="result-play" href="/">T<span class="inverse">R</span>y A<span class="inverse">G</span>ai<span class="inverse">N</span></a>
   }
   </body>
+  <audio src="../Content/music/layer-cake.mp3" autoplay>
+  <embed src="../Content/music/layer-cake.mp3" width="180" height="90" hidden="true" />
+  </audio>
 </html>

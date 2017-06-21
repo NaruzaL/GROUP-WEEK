@@ -2,8 +2,11 @@
   Layout="Shared/_Layout.cshtml";
 }
 
-  <body>
-    <h2>You have captured @Model.GetShadowName()</h2>
-    <img src="@Model.GetImg()" alt="@Model.GetShadowName()" />
-    <p><a href="/">Back to Start</a></p>
+  <body class="capture">
+    <h2 class="name">Y<span class="inverse">o</span>u ha<span class="inverse">v</span>e ca<span class="inverse">p</span>tu<span class="inverse">r</span>ed </br><span class="first-letter-red"> @Model.GetShadowName()</span></h2>
+    <img class="shadow" src="@Model.GetImg()" alt="@Model.GetShadowName()" />
+    <p><a id="back" href="/">ne</span>w <span class="inverse">g</span>a<span class="inverse">me</span></a></p>
+    <audio src="../Content/music/night-rain.mp3" autoplay>
+    <embed src="../Content/music/night-rain.mp3" width="180" height="90" hidden="true" />
+    </audio>
   </body>
