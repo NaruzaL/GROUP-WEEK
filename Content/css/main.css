@@ -317,7 +317,7 @@
   transform: rotateZ(20deg);
   position: absolute;
   top: 280px;
-  right: 450px; }
+  right: 550px; }
   #result-reply:hover::after {
     left: 50px;
     top: 50px;
