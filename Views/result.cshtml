@@ -5,20 +5,24 @@
   <body class="result">
     <img class="shadow" src="/result/@Model["shadow"].GetImg()" alt="@Model["shadow"].GetShadowName()">
 
-    <h2>@Model["shadow"].GetShadowName()</h2>
+    <h2 class="name">@Model["shadow"].GetShadowName()</h2>
     @if (@Model["answer"].GetAnswerType() == @Model["shadow"].GetShadowType())
     {
-      <h4>Your answer pleases me</h4>
+      <div class="speech">
+        <h4 class="shadow-response">Your answer pleases me</h4>
+      </div>
 
       <form action="/second_question/ask" >
         <input type="hidden" class= "form-control" name="question-id" value="@Model["question1"].GetId()">
         <input type="hidden" class= "form-control" name="shadow-id" value="@Model["shadow"].GetId()">
-        <button type="submit" name="button">Next Question</button>
+        <button type="submit" name="button" id="result-reply">Next Question</button>
       </form>
     }
     else
     {
-      <h4>DIE!!!</h4>
-      <a href="/">Try again</a>
+      <div class="speech">
+        <h4 class="shadow-response">DIE!!!</h4>
+      </div>
+      <a href="/" id="result-play">Try again</a>
     }
   </body>

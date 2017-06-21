@@ -150,7 +150,7 @@
   font-family: 'Yanone Kaffeesatz'
   font-size: 26px
 
-.first-question, .second-question
+.first-question, .second-question, .result
   .speech
     animation: speech-appear 2.5s
 
@@ -287,22 +287,26 @@
     position: absolute
     right: 4%
     top: 35%
-    transform: rotate(30deg)
+    transform: scale(0)
+    animation: timid-appear 1s 1s forwards
   .timid
     position: absolute
     right: 5%
     top: 5%
-    transform: rotateZ(20deg)
+    transform: scale(0)
+    animation: gloomy-appear 1.5s 1s forwards
   .upbeat
     position: absolute
     top: 20%
     right: 20%
-    transform: rotateZ(-20deg)
+    transform: scale(0)
+    animation: irritable-appear 2s 1s forwards
   .gloomy
     position: absolute
     bottom: 25%
     right: 15%
-    transform: rotateZ(5deg)
+    transform: scale(0)
+    animation: upbeat-appear 2.5s 1s forwards
 
 
 #reply
@@ -316,6 +320,23 @@
       width: 200px
 
 /// Results ///
+@keyframes flip
+  0%
+    transform: rotateZ(0deg)
+  80%
+    transform: rotateZ(-420deg)
+  100%
+    transform: rotateZ(-380deg)
+
+@keyframes pulse
+  0%
+    transform: scale(.9) rotateZ(0)
+  30%
+    transform: scale(1) rotateZ(3deg)
+  60%
+    transform: scale(.9) rotateZ(-3deg)
+  100%
+    transform: scale(1) rotateZ(3deg)
 
 .result
   height: 100vh
@@ -323,10 +344,14 @@
   background-repeat: no-repeat
   background-position: center
   background-size: cover
-
+  .shadow
+    animation: pulse 1.7s forwards
+  .name
+    animation: flip 1.5s forwards
 .shadow-response
-  font-size: 50px
+  font-size: 45px
   margin-bottom: 200px
+
 
 #result-reply
   transform: rotateZ(20deg)
@@ -340,3 +365,16 @@
       top: 50px
       height: 170px
       width: 230px
+
+#result-play
+  transform: rotateZ(20deg)
+  position: absolute
+  top: 280px
+  right: 400px
+  @extend #play
+  &:hover
+    &::after
+      left: 10px
+      top: 50px
+      height: 170px
+      width: 170px
