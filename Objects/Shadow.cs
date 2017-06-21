@@ -10,14 +10,16 @@ namespace PersonaFive.Objects
     private string _type;
     private string _intro;
     private string _img;
+    private int _playerId;
     private int _id;
 
-    public Shadow(string Name, string Type, string Intro, string Img, int Id = 0)
+    public Shadow(string Name, string Type, string Intro, string Img, int PlayerId, int Id = 0)
     {
       _name = Name;
       _type = Type;
       _intro = Intro;
       _img = Img;
+      _playerId = PlayerId;
       _id = Id;
     }
 
@@ -36,6 +38,10 @@ namespace PersonaFive.Objects
     public string GetImg()
     {
       return _img;
+    }
+    public int GetPlayerId()
+    {
+      return _playerId;
     }
     public int GetId()
     {
@@ -57,7 +63,8 @@ namespace PersonaFive.Objects
         bool typeEqulity = (this.GetShadowType() == newShadow.GetShadowType());
         bool introEquality = (this.GetIntro() == newShadow.GetIntro());
         bool imgEquality = (this.GetImg() == newShadow.GetImg());
-        return (idEquality && nameEquality && typeEqulity);
+        bool playerIdEquality = (this.GetPlayerId() == newShadow.GetPlayerId());
+        return (idEquality && nameEquality && typeEqulity && imgEquality && playerIdEquality);
       }
     }
 
@@ -88,7 +95,8 @@ namespace PersonaFive.Objects
         string shadowType = rdr.GetString(2);
         string shadowIntro = rdr.GetString(3);
         string shadowImg = rdr.GetString(4);
-        Shadow newShadow = new Shadow(shadowName, shadowType, shadowIntro, shadowImg, shadowId);
+        int shadowPlayerId = rdr.GetInt32(5);
+        Shadow newShadow = new Shadow(shadowName, shadowType, shadowIntro, shadowImg, shadowPlayerId, shadowId);
         allShadows.Add(newShadow);
       }
       if (rdr != null)
@@ -107,7 +115,7 @@ namespace PersonaFive.Objects
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("INSERT INTO shadows (name, type, intro, img) OUTPUT INSERTED.id VALUES (@ShadowName, @ShadowType, @ShadowIntro, @ShadowImg)", conn);
+      SqlCommand cmd = new SqlCommand("INSERT INTO shadows (name, type, intro, img, player_id) OUTPUT INSERTED.id VALUES (@ShadowName, @ShadowType, @ShadowIntro, @ShadowImg, @shadowPlayerId)", conn);
 
       SqlParameter nameParameter = new SqlParameter();
       nameParameter.ParameterName = "@ShadowName";
@@ -125,10 +133,15 @@ namespace PersonaFive.Objects
       imgParameter.ParameterName = "@ShadowImg";
       imgParameter.Value = this.GetImg();
 
+      SqlParameter playerIdParameter = new SqlParameter();
+      playerIdParameter.ParameterName = "@ShadowPlayerId";
+      playerIdParameter.Value = this.GetPlayerId();
+
       cmd.Parameters.Add(nameParameter);
       cmd.Parameters.Add(typeParameter);
       cmd.Parameters.Add(introParameter);
       cmd.Parameters.Add(imgParameter);
+      cmd.Parameters.Add(playerIdParameter);
 
       SqlDataReader rdr = cmd.ExecuteReader();
 
@@ -164,6 +177,7 @@ namespace PersonaFive.Objects
       string foundShadowType = null;
       string foundShadowIntro = null;
       string foundShadowImg = null;
+      int foundShadowPlayerId = 0;
 
       while(rdr.Read())
       {
@@ -172,8 +186,9 @@ namespace PersonaFive.Objects
         foundShadowType = rdr.GetString(2);
         foundShadowIntro = rdr.GetString(3);
         foundShadowImg = rdr.GetString(4);
+        foundShadowPlayerId = rdr.GetInt32(5);
       }
-      Shadow foundShadow = new Shadow(foundShadowName, foundShadowType, foundShadowIntro, foundShadowImg, foundShadowId);
+      Shadow foundShadow = new Shadow(foundShadowName, foundShadowType, foundShadowIntro, foundShadowImg, foundShadowPlayerId, foundShadowId);
 
       if (rdr != null)
      {
@@ -247,35 +262,28 @@ namespace PersonaFive.Objects
       return answers;
     }
 
-    // public Dictionary<string,object> RandomShadow(){
-    //   Dictionary<string, object> model = new Dictionary<string, object>{};
-    //   List<Shadow> allShadows = Shadow.GetAll();
-    //   int i = new Random().Next(1, allShadows.Count + 1 );
-    //   Shadow randomShadow = allShadows[i];
-    //
-    //   List<Answer> shadowAnswers = randomShadow.GetAnswers();
-    //
-    //   int j = new Random().Next(1, shadowAnswers.Count + 1);
-    //   Answer randomAnswer = shadowAnswers[j];
-    //   List<Question> allRandomQuestions = randomAnswer.GetQuestions();
-    //
-    //   int n = new Random().Next(1, allRandomQuestions.Count);
-    //   Question randomQuestion = allRandomQuestions[n];
-    //
-    //   List<Answer> allAnswers = Answer.GetAll();
-    //   int k = new Random().Next(1, allAnswers.Count + 1);
-    //   Answer answerOne = allAnswers[k];
-    //   int l = new Random().Next(2, allAnswers.Count);
-    //   Answer answerTwo = allAnswers[l];
-    //
-    //   List<Answer> displayedAnswers = new List<Answer>{};
-    //   displayedAnswers.Add(randomAnswer);
-    //   displayedAnswers.Add(answerOne);
-    //   displayedAnswers.Add(answerTwo);
-    //   model.Add("shadow", randomShadow);
-    //   model.Add("answers", displayedAnswers);
-    //   model.Add("quesion", randomQuestion);
-    //   return model;
-    // }
+    public void AddPlayer(Player newPlayer)
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("UPDATE shadows SET player_id = @PlayerId OUTPUT INSERTED.player_id WHERE id = @ShadowId;;", conn);
+      SqlParameter shadowIdParameter = new SqlParameter();
+      shadowIdParameter.ParameterName = "@ShadowId";
+      shadowIdParameter.Value = this.GetId();
+      cmd.Parameters.Add(shadowIdParameter);
+
+      SqlParameter playerIdParameter = new SqlParameter();
+      playerIdParameter.ParameterName = "@PlayerId";
+      playerIdParameter.Value = newPlayer.GetId();
+      cmd.Parameters.Add(playerIdParameter);
+
+      cmd.ExecuteNonQuery();
+
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
   }
 }

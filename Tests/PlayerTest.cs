@@ -59,7 +59,21 @@ namespace PersonaFive
       Player foundPlayer = Player.Find(testPlayer.GetId());
       Assert.Equal(testPlayer, foundPlayer);
     }
+    [Fact]
+    public void Test_GetShadows_ReturnsListOfShadowsCaughtByPlayer()
+    {
+      Player testPlayer = new Player("Jim", false, "img filepath");
+      testPlayer.Save();
 
+      Shadow testShadow = new Shadow("Boogie man", "irritable", "intro sentence", "/Content/img/shadow.png", testPlayer.GetId());
+      testShadow.Save();
+      Shadow testShadow2 = new Shadow("Boogle man", "timid", "intro sentence two", "/Content/img/shadow2.png", testPlayer.GetId());
+      testShadow2.Save();
+
+      List<Shadow> result = testPlayer.GetShadows();
+      List<Shadow> testList = new List<Shadow>{testShadow, testShadow2};
+      Assert.Equal(testList, result);
+    }
 
     public void Dispose()
     {

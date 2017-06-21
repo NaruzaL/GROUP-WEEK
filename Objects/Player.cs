@@ -172,6 +172,40 @@ namespace PersonaFive.Objects
      return foundPlayer;
     }
 
+    public List<Shadow> GetShadows()
+   {
+     SqlConnection conn = DB.Connection();
+     conn.Open();
+
+     SqlCommand cmd = new SqlCommand("SELECT * FROM shadows WHERE player_id = @Player_id;", conn);
+     SqlParameter playerIdParameter = new SqlParameter();
+     playerIdParameter.ParameterName = "@Player_id";
+     playerIdParameter.Value = this.GetId();
+     cmd.Parameters.Add(playerIdParameter);
+     SqlDataReader rdr = cmd.ExecuteReader();
+
+     List<Shadow> shadows = new List<Shadow> {};
+     while(rdr.Read())
+     {
+       int shadowId = rdr.GetInt32(0);
+       string shadowName = rdr.GetString(1);
+       string shadowType = rdr.GetString(2);
+       string shadowIntro = rdr.GetString(3);
+       string shadowImg = rdr.GetString(4);
+
+       Shadow newShadow = new Shadow(shadowName, shadowType, shadowIntro, shadowImg, shadowId);
+       shadows.Add(newShadow);
+     }
+     if (rdr != null)
+     {
+       rdr.Close();
+     }
+     if (conn != null)
+     {
+       conn.Close();
+     }
+     return shadows;
+   }
 
   }
 }

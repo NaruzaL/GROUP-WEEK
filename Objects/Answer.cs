@@ -205,7 +205,8 @@ namespace PersonaFive.Objects
           string shadowType = rdr.GetString(2);
           string shadowIntro = rdr.GetString(3);
           string shadowImg = rdr.GetString(4);
-          Shadow foundShadow = new Shadow(shadowName, shadowType, shadowIntro, shadowImg, shadowId);
+          int shadowPlayerId = rdr.GetInt32(5);
+          Shadow foundShadow = new Shadow(shadowName, shadowType, shadowIntro, shadowImg, shadowPlayerId, shadowId);
           shadows.Add(foundShadow);
         }
         if (rdr != null)
