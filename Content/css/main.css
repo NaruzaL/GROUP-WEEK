@@ -11,6 +11,10 @@
     .landing-page {
       background-image: url("../img/mobile-background.jpg"); } }
 
+.first-question {
+  overflow-y: hidden;
+  overflow-x: hidden; }
+
 .container {
   height: 100vh;
   width: 100vw;
@@ -126,7 +130,7 @@ select {
 .shadow {
   height: 600px;
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
   left: 25%;
   -webkit-filter: drop-shadow(5px 5px 0px red);
   filter: drop-shadow(5px 5px 0px red);
@@ -218,23 +222,60 @@ select {
   position: absolute;
   right: 4%;
   top: 35%;
-  transform: rotate(30deg); }
+  transform: scale(0);
+  animation: timid-appear 1s 1s forwards; }
 .first-question .gloomy {
   position: absolute;
   right: 5%;
   top: 5%;
-  transform: rotateZ(20deg); }
+  transform: scale(0);
+  animation: gloomy-appear 1.5s 1s forwards; }
 .first-question .irritable {
   position: absolute;
   top: 20%;
   right: 20%;
-  transform: rotateZ(-20deg); }
+  transform: scale(0);
+  animation: irritable-appear 2s 1s forwards; }
 .first-question .upbeat {
   position: absolute;
   bottom: 25%;
   right: 15%;
-  transform: rotateZ(5deg); }
+  transform: scale(0);
+  animation: upbeat-appear 2.5s 1s forwards; }
 
+@keyframes timid-appear {
+  0% {
+    transform: scale(0) rotate(7deg); }
+  50% {
+    transform: scale(1) rotate(15deg); }
+  100% {
+    transform: scale(1) rotate(30deg); } }
+@keyframes gloomy-appear {
+  0% {
+    transform: scale(0) rotate(5deg); }
+  50% {
+    transform: scale(1) rotate(10deg); }
+  100% {
+    transform: scale(1) rotate(20deg); } }
+@keyframes irritable-appear {
+  0% {
+    transform: scale(0) rotate(-5deg); }
+  50% {
+    transform: scale(1) rotate(-10deg); }
+  100% {
+    transform: scale(1) rotate(-20deg); } }
+@keyframes upbeat-appear {
+  0% {
+    transform: scale(0) rotate(1deg); }
+  50% {
+    transform: scale(1) rotate(2.5deg); }
+  100% {
+    transform: scale(1) rotate(5deg); } }
+@keyframes wiggle {
+  0% {
+    transform: rotateZ(-20deg); }
+  100% {
+    transform: rotateZ(20deg); } }
 .second-question .irritable {
   position: absolute;
   right: 4%;
