@@ -10,7 +10,7 @@
     {
       <h4>Your answer pleases me</h4>
 
-      <form action="/second_question/ask/@Model["shadow"].GetId()" >
+      <form action="/second_question/ask" >
         <input type="hidden" class= "form-control" name="question-id" value="@Model["question1"].GetId()">
         <input type="hidden" class= "form-control" name="shadow-id" value="@Model["shadow"].GetId()">
         <button type="submit" name="button">Next Question</button>
