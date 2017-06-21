@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700" rel="stylesheet">
     <link rel="stylesheet" href="../Content/css/main.css">
     <meta charset="utf-8">
     <title></title>
@@ -15,11 +16,50 @@
     <form action="/second_question/result/@Model["shadow"].GetId()" method="post">
         @foreach(var answer in @Model["answers"])
         {
-          <input type="radio" name="answer-id" value="@answer.GetId()">@answer.GetAnswerName()
+          @if(answer.GetAnswerType() == "gloomy")
+          {
+            <div class="radio gloomy">
+              <label>
+                <input class="@Model["answers"].GetType()" type="radio" name="answer-id" value="@answer.GetId()">@answer.GetAnswerName()
+              </label>
+            </div>
+          }
+          @if(answer.GetAnswerType() == "timid")
+          {
+            <div class="radio timid">
+              <label>
+                <input class="@Model["answers"].GetType()" type="radio" name="answer-id" value="@answer.GetId()">@answer.GetAnswerName()
+              </label>
+            </div>
+          }
+          @if(answer.GetAnswerType() == "irritable")
+          {
+            <div class="radio irritable">
+              <label>
+                <input class="@Model["answers"].GetType()" type="radio" name="answer-id" value="@answer.GetId()">@answer.GetAnswerName()
+              </label>
+            </div>
+          }
+          @if(answer.GetAnswerType() == "upbeat")
+          {
+            <div class="radio upbeat">
+              <label>
+                <input class="@Model["answers"].GetType()" type="radio" name="answer-id" value="@answer.GetId()">@answer.GetAnswerName()
+              </label>
+            </div>
+          }
         }
-      </select>
-      <input type="hidden" name="shadow-id" value="@Model["shadow"].GetId()">
       <button id="reply" type="submit" name="button">ReP<span class="inverse">L</span>y</button>
     </form>
   </body>
 </html>
+
+
+
+
+<!-- <form action="/second_question/result/@Model["shadow"].GetId()" method="post">
+    @foreach(var answer in @Model["answers"])
+    {
+      <input type="radio" name="answer-id" value="@answer.GetId()">@answer.GetAnswerName()
+    }
+  </select> -->

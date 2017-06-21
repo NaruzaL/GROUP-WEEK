@@ -118,7 +118,7 @@ namespace PersonaFive
 
       Post["/second_question/result/{id}"] = parameters => {
         Dictionary<string,object> model = new Dictionary<string,object>{};
-        Shadow randomShadow = Shadow.Find(Request.Form["shadow-id"]);
+        Shadow randomShadow = Shadow.Find(parameters.id);
         Answer selectedAnswer = Answer.Find(Request.Form["answer-id"]);
         model.Add("shadow", randomShadow);
         model.Add("answer", selectedAnswer);
