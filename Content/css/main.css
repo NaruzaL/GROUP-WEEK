@@ -186,7 +186,7 @@ select {
   70% {
     transform: translateX(-800px); }
   80% {
-    transform: translateX(200px); }
+    transform: translateX(200px) rotateZ(-20deg); }
   100% {
     transform: translateX(0px); } }
 .intro {
