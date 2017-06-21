@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700" rel="stylesheet">
-    <link rel="stylesheet" href="/ask/../Content/css/main.css">
-    <meta charset="utf-8">
-    <title></title>
-  </head>
+@{
+  Layout="Shared/_Layout.cshtml";
+}
+
   <body class="second-question">
     <img class="shadow" src="/ask/@Model["shadow"].GetImg()" alt="@Model["shadow"].GetShadowName()">
     <h2 class="name">@Model["shadow"].GetShadowName()</h2>
@@ -52,7 +48,7 @@
       <button id="reply" type="submit" name="button">ReP<span class="inverse">L</span>y</button>
     </form>
   </body>
-</html>
+
 
 
 
