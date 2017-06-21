@@ -21,7 +21,7 @@
   display: flex;
   justify-content: center; }
 
-#play, #reply {
+#play, #reply, #result-reply {
   text-decoration: none;
   color: black;
   font-family: "earwig";
@@ -35,9 +35,9 @@
   text-shadow: 2px 2px 0px #fe0000;
   letter-spacing: -10px;
   position: relative; }
-  #play:hover, #reply:hover {
+  #play:hover, #reply:hover, #result-reply:hover {
     transform: scale(1.5, 1.5) rotateZ(-20deg); }
-    #play:hover::after, #reply:hover::after {
+    #play:hover::after, #reply:hover::after, #result-reply:hover::after {
       z-index: -1;
       left: 50px;
       top: 50px;
@@ -49,9 +49,9 @@
       opacity: 0.7;
       animation: jigs 0.5s both infinite;
       animation-direction: alternate; }
-  #play:focus, #reply:focus {
+  #play:focus, #reply:focus, #result-reply:focus {
     outline: none; }
-  #play:active, #reply:active {
+  #play:active, #reply:active, #result-reply:active {
     outline: none; }
 
 #title1, #title2 {
@@ -111,15 +111,6 @@
     transform: skew(7deg) rotate(2deg) scale(1.1); }
   100% {
     transform: skew(42deg) rotate(-20deg) scale(1.6); } }
-select {
-  appearance: none;
-  width: 400px;
-  height: 200px;
-  font-family: "earwig";
-  font-size: 40px; }
-  select .option {
-    background-color: red; }
-
 .first-question, .second-question {
   height: 100vh;
   background-image: url("../img/street.png");
@@ -133,7 +124,9 @@ select {
   bottom: 20px;
   left: 25%;
   -webkit-filter: drop-shadow(5px 5px 0px red);
-  filter: drop-shadow(5px 5px 0px red);
+  filter: drop-shadow(5px 5px 0px red); }
+
+.first-question .shadow, .second-question .shadow {
   animation: character-appear 1.5s; }
 
 @keyframes character-appear {
@@ -157,7 +150,9 @@ select {
   left: 8%;
   padding: 25px;
   font-family: "Yanone Kaffeesatz";
-  font-size: 26px;
+  font-size: 26px; }
+
+.first-question .speech, .second-question .speech {
   animation: speech-appear 2.5s; }
 
 @keyframes speech-appear {
@@ -177,7 +172,9 @@ select {
   letter-spacing: -10px;
   position: absolute;
   bottom: 0;
-  left: 10%;
+  left: 10%; }
+
+.first-question .name, .second-question .name {
   animation: name-appear 1.5s; }
 
 @keyframes name-appear {
@@ -304,5 +301,27 @@ select {
   transform: rotateZ(-5deg); }
   #reply:hover::after {
     width: 200px; }
+
+.result {
+  height: 100vh;
+  background-image: url("../img/street.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; }
+
+.shadow-response {
+  font-size: 50px;
+  margin-bottom: 200px; }
+
+#result-reply {
+  transform: rotateZ(20deg);
+  position: absolute;
+  top: 280px;
+  right: 450px; }
+  #result-reply:hover::after {
+    left: 50px;
+    top: 50px;
+    height: 170px;
+    width: 230px; }
 
 /*# sourceMappingURL=main.css.map */

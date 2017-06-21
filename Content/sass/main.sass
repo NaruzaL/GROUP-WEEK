@@ -105,16 +105,7 @@
   100%
     transform: skew(42deg) rotate(-20deg) scale(1.6)
 
-/// First Question ///
-
-select
-  appearance: none
-  width: 400px
-  height: 200px
-  font-family: 'earwig'
-  font-size: 40px
-  .option
-    background-color: red
+/// Questions ///
 
 .first-question, .second-question
   height: 100vh
@@ -130,7 +121,10 @@ select
   left: 25%
   -webkit-filter: drop-shadow(5px 5px 0px red)
   filter: drop-shadow(5px 5px 0px red)
-  animation: character-appear 1.5s
+
+.first-question, .second-question
+  .shadow
+    animation: character-appear 1.5s
 
 @keyframes character-appear
   0%
@@ -155,7 +149,10 @@ select
   padding: 25px
   font-family: 'Yanone Kaffeesatz'
   font-size: 26px
-  animation: speech-appear 2.5s
+
+.first-question, .second-question
+  .speech
+    animation: speech-appear 2.5s
 
 @keyframes speech-appear
   0%
@@ -176,7 +173,10 @@ select
   position: absolute
   bottom: 0
   left: 10%
-  animation: name-appear 1.5s
+
+.first-question, .second-question
+  .name
+    animation: name-appear 1.5s
 
 @keyframes name-appear
   0%
@@ -314,3 +314,29 @@ select
   &:hover
     &::after
       width: 200px
+
+/// Results ///
+
+.result
+  height: 100vh
+  background-image: url('../img/street.png')
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
+
+.shadow-response
+  font-size: 50px
+  margin-bottom: 200px
+
+#result-reply
+  transform: rotateZ(20deg)
+  position: absolute
+  top: 280px
+  right: 450px
+  @extend #play
+  &:hover
+    &::after
+      left: 50px
+      top: 50px
+      height: 170px
+      width: 230px

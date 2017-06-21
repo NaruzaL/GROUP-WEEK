@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700" rel="stylesheet">
+    <link rel="stylesheet" href="../Content/css/main.css">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body class="result">
+    <img class="shadow" src="../Content/img/carmen.png">
+
+    <h2 class="name">CA<span class="inverse">r</span>me<span class="inverse">n</span></h2>
+    <!-- @if (@Model["answer"].GetAnswerType() == @Model["shadow"].GetShadowType())
+    { -->
+    <div class="speech">
+      <h4 class="shadow-response">Your answer pleases me</h4>
+    </div>
+
+
+      <!-- <form action="/second_question/ask/@Model["shadow"].GetId()" >
+        <input type="hidden" class= "form-control" name="question-id" value="@Model["question1"].GetId()">
+        <input type="hidden" class= "form-control" name="shadow-id" value="@Model["shadow"].GetId()"> -->
+        <button id="result-reply" type="submit" name="button">Ne<span class="inverse">X</span>t Q<span class="inverse">u</span>eSti<span class="inverse">O</span>n</button>
+      </form>
+    <!-- }
+    else
+    { -->
+      <!-- <h4>DIE!!!</h4>
+      <a id="result-play" href="/">Try again</a>
+    } -->
+  </body>
+</html>
