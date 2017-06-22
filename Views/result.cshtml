@@ -17,6 +17,8 @@
         <input type="hidden" class= "form-control" name="shadow-id" value="@Model["shadow"].GetId()">
         <button type="submit" name="button" id="result-reply">Ne<span class="inverse">X</span>t Q<span class="inverse">u</span>eSti<span class="inverse">O</span>n</button>
       </form>
+      <audio src="/result/../Content/music/last-surprise.mp3" autoplay>
+      </audio>
     }
     else
     {
@@ -24,8 +26,7 @@
         <h4 class="shadow-response">What?! That's a strange answer...</h4>
       </div>
       <a href="/" id="result-play">T<span class="inverse">R</span>y A<span class="inverse">G</span>ai<span class="inverse">N</span></a>
+      <audio src="/result/../Content/music/mlg-airhorn.mp3" autoplay>
+      </audio>
     }
-    <audio src="../Content/music/last-surprise.mp3" autoplay>
-    <embed src="../Content/music/last-surprise.mp3" width="180" height="90" hidden="true" />
-    </audio>
   </body>
