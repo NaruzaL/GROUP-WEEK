@@ -6,21 +6,45 @@
     <title></title>
   </head>
   <body class="second-question">
-    <img class="shadow" src="/ask/@Model["shadow"].GetImg()" alt="@Model["shadow"].GetShadowName()">
-    <h2 class="name">@Model["shadow"].GetShadowName()</h2>
+    <img class="shadow" src="../Content/img/necronomicon.png">
+    <h2 class="name">necronomicon</h2>
     <div class="speech">
-      <h3 class="intro">@Model["shadow"].GetIntro()</h3>
-      <h4 class="question">@Model["question"].GetQuestionName()</h4>
+      <h3 class="intro">hey bith im gonna fuck u up you ho im mad as hell damn boi</h3>
+      <h4 class="question">where my bitches as ayyyeee?</h4>
     </div>
-    <form action="/second_question/result/@Model["shadow"].GetId()" method="post">
+    <div class="radio irritable">
+      <label>
+        <input type="radio" name="flavor" value="chocolate" checked>
+        Chocolate i sure love that stuff wow
+      </label>
+    </div>
+    <div class="radio gloomy">
+      <label>
+        <input type="radio" name="flavor" value="vanilla">
+        Vanilla
+      </label>
+    </div>
+    <div class="radio timid">
+      <label>
+        <input type="radio" name="flavor" value="cookiesandcream">
+        Cookies & Cream
+      </label>
+    </div>
+    <div class="radio upbeat">
+      <label>
+        <input type="radio" name="flavor" value="cookiesandcream">
+        Cookies & Cream
+      </label>
+    </div>
+    <!-- <form action="/second_question/result/@Model["shadow"].GetId()" method="post">
         @foreach(var answer in @Model["answers"])
         {
           <input type="radio" name="answer-id" value="@answer.GetId()">@answer.GetAnswerName()
         }
       </select>
-      <input type="hidden" name="shadow-id" value="@Model["shadow"].GetId()">
+      <input type="hidden" name="shadow-id" value="@Model["shadow"].GetId()"> -->
       <button id="reply" type="submit" name="button">ReP<span class="inverse">L</span>y</button>
-    </form>
+    <!-- </form> -->
     <audio src="../Content/music/layer-cake.mp3" autoplay>
     <embed src="../Content/music/layer-cake.mp3" width="180" height="90" hidden="true" />
     </audio>
