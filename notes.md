@@ -313,9 +313,10 @@ type: timid
 question: ain't you kinda old to be playin' dress up? So who are you trying to impress with that mask?
 
 answers:
-timid - nobody,
+gloomy - nobody
 irritable - shut up,
 upbeat - I'm actually still young.
+timid - Everybody.
 
 question: you know if you think about it I'm basically your sempai. Just thinking about heirarchy you should be showing me a little more respect, shouldn't you?
 
@@ -426,10 +427,10 @@ timid - someone did once.
 question: Ah, well, it looks like the last moment of my life's finally snuck up on me. You know if I'm going to be killed, I'd rather be offed by some beautiful classy woman
 
 answers:
-gloomy - sorry,
+gloomy - it's all the same
 irritable - you don't get to be picky
 upbeat - Am I not beautiful and classy enough for you?
-timid - it's all the same
+timid - sorry
 
 name: kin-ki
 type: irritable
@@ -457,3 +458,79 @@ gloomy - I could really use one right now.
 irritable - I'm not sleepy yet,
 upbeat - I'm not that young,
 timid - mom will wait till I'm done.
+
+
+
+@for(int i = 0; i < 3; i ++)
+{
+  @if (i = 2)
+  {
+    @if(@Model["answers"].GetAnswerType() == "gloomy")
+    {
+      <div class="radio gloomy">
+        <label>
+          <input class="@Model["answers"].GetType()" type="radio" name="answer-id" value="@Model["answers"].GetId()" checked>@Model["answers"].GetAnswerName()
+        </label>
+      </div>
+    }
+    @if(@Model["answers"].GetAnswerType() == "timid")
+    {
+      <div class="radio timid">
+        <label>
+          <input class="@Model["answers"].GetType()" type="radio" name="answer-id" value="@Model["answers"].GetId()" checked>@Model["answers"].GetAnswerName()
+        </label>
+      </div>
+    }
+    @if(@Model["answers"].GetAnswerType() == "irritable")
+    {
+      <div class="radio irritable">
+        <label>
+          <input class="@Model["answers"].GetType()" type="radio" name="answer-id" value="@Model["answers"].GetId()" checked>@Model["answers"].GetAnswerName()
+        </label>
+      </div>
+    }
+    @if(@Model["answers"].GetAnswerType() == "upbeat")
+    {
+      <div class="radio upbeat">
+        <label>
+          <input class="@Model["answers"].GetType()" type="radio" name="answer-id" value="@Model["answers"].GetId()" checked>@Model["answers"].GetAnswerName()
+        </label>
+      </div>
+    }
+  }
+  else
+  {
+    @if(@Model["answers"].GetAnswerType() == "gloomy")
+    {
+      <div class="radio gloomy">
+        <label>
+          <input class="@Model["answers"].GetType()" type="radio" name="answer-id" value="@Model["answers"].GetId()">@Model["answers"].GetAnswerName()
+        </label>
+      </div>
+    }
+    @if(@Model["answers"].GetAnswerType() == "timid")
+    {
+      <div class="radio timid">
+        <label>
+          <input class="@Model["answers"].GetType()" type="radio" name="answer-id" value="@Model["answers"].GetId()">@Model["answers"].GetAnswerName()
+        </label>
+      </div>
+    }
+    @if(@Model["answers"].GetAnswerType() == "irritable")
+    {
+      <div class="radio irritable">
+        <label>
+          <input class="@Model["answers"].GetType()" type="radio" name="answer-id" value="@Model["answers"].GetId()">@Model["answers"].GetAnswerName()
+        </label>
+      </div>
+    }
+    @if(@Model["answers"].GetAnswerType() == "upbeat")
+    {
+      <div class="radio upbeat">
+        <label>
+          <input class="@Model["answers"].GetType()" type="radio" name="answer-id" value="@Model["answers"].GetId()">@Model["answers"].GetAnswerName()
+        </label>
+      </div>
+    }
+  }
+}
