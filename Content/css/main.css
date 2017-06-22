@@ -128,8 +128,8 @@
   position: absolute;
   bottom: 20px;
   left: 25%;
-  -webkit-filter: drop-shadow(5px 5px 0px red);
-  filter: drop-shadow(5px 5px 0px red); }
+  -webkit-filter: drop-shadow(5px 5px 0px #fe0000);
+  filter: drop-shadow(5px 5px 0px #fe0000); }
   @media screen and (max-width: 1840px) {
     .shadow {
       height: 450px; } }
@@ -510,111 +510,161 @@
             height: 50px;
             width: 270px; } }
 
-.timeline time {
-  color: blue;
-  font-size: 45px;
-  text-shadow: 4px 4px black; }
-.timeline p {
-  font-size: 20px;
-  text-shadow: 2px 2px black; }
-.timeline h2 {
-  font-style: italic;
-  font-size: 90px;
+.about {
+  height: 100vh;
+  background-image: url("../img/city.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden; }
+
+.zigzag {
+  width: 2000px;
+  -webkit-filter: drop-shadow(10px 10px 0px #fe0000);
+  filter: drop-shadow(10px 10x 0px #fe0000);
+  transform: rotateZ(50deg);
+  position: absolute;
+  top: -600px;
+  left: 10%; }
+
+.pete {
+  z-index: 1;
+  width: 300px;
+  height: 400px;
   text-align: center;
-  font-family: "Grand Hotel", cursive;
-  text-shadow: 4px 4px 2px white;
-  color: black; }
-.timeline ul li {
-  list-style-type: none;
-  position: relative;
-  width: 6px;
+  position: absolute;
+  top: 1px;
+  left: 640px;
+  transform: rotateZ(15deg);
+  border: 20px solid black;
+  background-color: white;
+  font-family: "earwig";
+  text-shadow: 2px 2px 0px #fe0000;
+  font-size: 30px; }
+  .pete a {
+    text-decoration: none;
+    color: #fe0000;
+    font-family: "Yanone Kaffeesatz";
+    text-shadow: none; }
+  .pete h2 {
+    padding: 10px;
+    margin: 0;
+    letter-spacing: -4px; }
+
+.isabella {
+  z-index: 1;
+  width: 300px;
+  text-align: center;
+  color: black;
+  position: absolute;
+  top: 605px;
+  left: 660px;
+  transform: rotateZ(-15deg);
+  border: 20px solid black;
+  background-color: white;
+  font-family: "earwig";
+  text-shadow: 2px 2px 0px #fe0000;
+  font-size: 30px; }
+  .isabella a {
+    text-decoration: none;
+    color: #fe0000;
+    font-family: "Yanone Kaffeesatz";
+    text-shadow: none; }
+  .isabella h2 {
+    padding: 10px;
+    margin: 0;
+    letter-spacing: -4px; }
+
+.james {
+  z-index: 1;
+  width: 300px;
+  text-align: center;
+  color: black;
+  position: absolute;
+  top: 400px;
+  left: 1390px;
+  transform: rotateZ(15deg);
+  border: 20px solid black;
+  background-color: white;
+  font-family: "earwig";
+  text-shadow: 2px 2px 0px #fe0000;
+  font-size: 30px; }
+  .james a {
+    text-decoration: none;
+    color: #fe0000;
+    font-family: "Yanone Kaffeesatz";
+    text-shadow: none; }
+  .james h2 {
+    padding: 10px;
+    margin: 0;
+    letter-spacing: -4px; }
+
+.andrew {
+  z-index: 1;
+  width: 300px;
+  text-align: center;
+  color: black;
+  position: absolute;
+  top: 560px;
+  left: 1820px;
+  transform: rotateZ(-15deg);
+  border: 20px solid black;
+  background-color: white;
+  font-family: "earwig";
+  text-shadow: 2px 2px 0px #fe0000;
+  font-size: 30px; }
+  .andrew a {
+    text-decoration: none;
+    color: #fe0000;
+    font-family: "Yanone Kaffeesatz";
+    text-shadow: none; }
+  .andrew h2 {
+    padding: 10px;
+    margin: 0;
+    letter-spacing: -4px; }
+
+.background-pete {
+  width: 100%;
+  height: 230px;
+  background-image: url("../img/ryuji.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
   margin: 0 auto;
-  padding-top: 50px;
-  background: pink; }
-  @media screen and (max-width: 600px) {
-    .timeline ul li {
-      margin-left: 20px; } }
-  .timeline ul li::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: inherit;
-    background: white;
-    transition: background 0.5s ease-in-out; }
-  .timeline ul li div {
-    position: relative;
-    bottom: 0;
-    width: 600px;
-    padding: 15px;
-    background: red;
-    color: white;
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cstyle%3E.st0{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-50%);}}%3C/style%3E%3Cpath fill='none' stroke='#f00' stroke-width='1' class='st0' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
-    background-size: auto 10px;
-    background-repeat: repeat-y repeat-x;
-    border-radius: 10px 10px 10px;
-    visibility: hidden;
-    opacity: 0;
-    transition: all 0.5s ease-in-out; }
-    @media screen and (max-width: 1800px) {
-      .timeline ul li div {
-        width: 400px; } }
-    @media screen and (max-width: 1000px) {
-      .timeline ul li div {
-        width: 250px; } }
-    @media screen and (max-width: 600px) {
-      .timeline ul li div {
-        width: calc(100vw - 91px); } }
-    .timeline ul li div::before {
-      content: "";
-      position: absolute;
-      bottom: 7px;
-      width: 0;
-      height: 0;
-      border-style: solid; }
-  .timeline ul li img {
-    width: 100%; }
+  background-color: #fe0000;
+  border-bottom: 10px solid black; }
 
-.timeline ul li:nth-child(odd) div {
-  left: 45px;
-  transform: translate3d(200px, 0, 0); }
-  .timeline ul li:nth-child(odd) div::before {
-    left: -15px;
-    border-width: 8px 16px 8px 0;
-    border-color: transparent red transparent transparent; }
+.background-isabella {
+  width: 100%;
+  height: 250px;
+  background-image: url("../img/chihaya.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin: 0 auto;
+  background-color: #fe0000;
+  border-bottom: 10px solid black; }
 
-.timeline ul li:nth-child(even) div {
-  left: -639px;
-  transform: translate3d(-200px, 0, 0); }
-  .timeline ul li:nth-child(even) div::before {
-    right: -15px;
-    border-width: 8px 0 8px 16px;
-    border-color: transparent transparent transparent red; }
-    @media screen and (max-width: 600px) {
-      .timeline ul li:nth-child(even) div::before {
-        left: -15px;
-        border-width: 8px 16px 8px 0;
-        border-color: transparent red transparent transparent; } }
-  @media screen and (max-width: 1800px) {
-    .timeline ul li:nth-child(even) div {
-      left: -449px; } }
-  @media screen and (max-width: 1000px) {
-    .timeline ul li:nth-child(even) div {
-      left: -289px; } }
-  @media screen and (max-width: 600px) {
-    .timeline ul li:nth-child(even) div {
-      left: 45px; } }
+.background-james {
+  width: 100%;
+  height: 250px;
+  background-image: url("../img/yusuke.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin: 0 auto;
+  background-color: #fe0000;
+  border-bottom: 10px solid black; }
 
-.timeline ul li.in-view::after {
-  background: red; }
-
-.timeline ul li.in-view div {
-  transform: none;
-  visibility: visible;
-  opacity: 1; }
+.background-andrew {
+  width: 100%;
+  height: 250px;
+  background-image: url("../img/akechi.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin: 0 auto;
+  background-color: #fe0000;
+  border-bottom: 10px solid black; }
 
 /*# sourceMappingURL=main.css.map */
