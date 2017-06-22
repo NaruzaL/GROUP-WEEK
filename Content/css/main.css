@@ -7,7 +7,9 @@
   position: absolute;
   left: 50px;
   top: 30px;
-  animation: mask 4s forwards infinite; }
+  animation: mask 4s forwards infinite;
+  display: block;
+  width: 150px; }
   .mask img {
     width: 150px; }
 
@@ -567,7 +569,9 @@
   text-shadow: 2px 2px 0px #fe0000;
   font-size: 30px;
   transform: scale(0);
-  animation: about 1.8s 1s forwards; }
+  animation: about 1.8s 1s forwards;
+  -webkit-filter: drop-shadow(5px 5px 5px black);
+  filter: drop-shadow(5px 5px 5px black); }
   .pete a {
     text-decoration: none;
     color: #fe0000;
@@ -593,7 +597,9 @@
   text-shadow: 2px 2px 0px #fe0000;
   font-size: 30px;
   transform: scale(0);
-  animation: about-opposite 0.5s 1s forwards; }
+  animation: about-opposite 0.5s 1s forwards;
+  -webkit-filter: drop-shadow(5px 5px 5px black);
+  filter: drop-shadow(5px 5px 5px black); }
   .isabella a {
     text-decoration: none;
     color: #fe0000;
@@ -619,7 +625,9 @@
   text-shadow: 2px 2px 0px #fe0000;
   font-size: 30px;
   transform: scale(0);
-  animation: about 1s 1s forwards; }
+  animation: about 1s 1s forwards;
+  -webkit-filter: drop-shadow(5px 5px 5px black);
+  filter: drop-shadow(5px 5px 5px black); }
   .james a {
     text-decoration: none;
     color: #fe0000;
@@ -645,7 +653,9 @@
   text-shadow: 2px 2px 0px #fe0000;
   font-size: 30px;
   transform: scale(0);
-  animation: about-opposite 1.7s 1s forwards; }
+  animation: about-opposite 1.7s 1s forwards;
+  -webkit-filter: drop-shadow(5px 5px 5px black);
+  filter: drop-shadow(5px 5px 5px black); }
   .andrew a {
     text-decoration: none;
     color: #fe0000;
