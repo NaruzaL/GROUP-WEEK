@@ -10,41 +10,80 @@
       <h4 class="question">@Model["question"].GetQuestionName()</h4>
     </div>
     <form action="/first_question/result/@Model["shadow"].GetId()" method="post">
-        @foreach(var answer in @Model["answers"])
+      @for(int i = 0; i < 3; i ++)
+      {
+        @if (i == 2)
         {
-          @if(answer.GetAnswerType() == "gloomy")
+          @if(@Model["answers"][2].GetAnswerType() == "gloomy")
           {
             <div class="radio gloomy">
               <label>
-                <input class="@Model["answers"].GetType()" type="radio" name="answer-id" value="@answer.GetId()">@answer.GetAnswerName()
+                <input class="@Model["answers"][2].GetType()" type="radio" name="answer-id" value="@Model["answers"][2].GetId()" checked>@Model["answers"][2].GetAnswerName()
               </label>
             </div>
           }
-          @if(answer.GetAnswerType() == "timid")
+          @if(@Model["answers"][2].GetAnswerType() == "timid")
           {
             <div class="radio timid">
               <label>
-                <input class="@Model["answers"].GetType()" type="radio" name="answer-id" value="@answer.GetId()">@answer.GetAnswerName()
+                <input class="@Model["answers"][2].GetType()" type="radio" name="answer-id" value="@Model["answers"][2].GetId()" checked>@Model["answers"][2].GetAnswerName()
               </label>
             </div>
           }
-          @if(answer.GetAnswerType() == "irritable")
+          @if(@Model["answers"][2].GetAnswerType() == "irritable")
           {
             <div class="radio irritable">
               <label>
-                <input class="@Model["answers"].GetType()" type="radio" name="answer-id" value="@answer.GetId()">@answer.GetAnswerName()
+                <input class="@Model["answers"][2].GetType()" type="radio" name="answer-id" value="@Model["answers"][2].GetId()" checked>@Model["answers"][2].GetAnswerName()
               </label>
             </div>
           }
-          @if(answer.GetAnswerType() == "upbeat")
+          @if(@Model["answers"][2].GetAnswerType() == "upbeat")
           {
             <div class="radio upbeat">
               <label>
-                <input class="@Model["answers"].GetType()" type="radio" name="answer-id" value="@answer.GetId()">@answer.GetAnswerName()
+                <input class="@Model["answers"][2].GetType()" type="radio" name="answer-id" value="@Model["answers"][2].GetId()" checked>@Model["answers"][2].GetAnswerName()
               </label>
             </div>
           }
         }
+        else
+        {
+          @if(@Model["answers"][i].GetAnswerType() == "gloomy")
+          {
+            <div class="radio gloomy">
+              <label>
+                <input class="@Model["answers"][i].GetType()" type="radio" name="answer-id" value="@Model["answers"][i].GetId()">@Model["answers"][i].GetAnswerName()
+              </label>
+            </div>
+          }
+          @if(@Model["answers"][i].GetAnswerType() == "timid")
+          {
+            <div class="radio timid">
+              <label>
+                <input class="@Model["answers"][i].GetType()" type="radio" name="answer-id" value="@Model["answers"][i].GetId()">@Model["answers"][i].GetAnswerName()
+              </label>
+            </div>
+          }
+          @if(@Model["answers"][i].GetAnswerType() == "irritable")
+          {
+            <div class="radio irritable">
+              <label>
+                <input class="@Model["answers"][i].GetType()" type="radio" name="answer-id" value="@Model["answers"][i].GetId()">@Model["answers"][i].GetAnswerName()
+              </label>
+            </div>
+          }
+          @if(@Model["answers"][i].GetAnswerType() == "upbeat")
+          {
+            <div class="radio upbeat">
+              <label>
+                <input class="@Model["answers"][i].GetType()" type="radio" name="answer-id" value="@Model["answers"][i].GetId()">@Model["answers"][i].GetAnswerName()
+              </label>
+            </div>
+          }
+        }
+      }
+
       <input type="hidden" name="shadow-id" value="@Model["shadow"].GetId()">
       <input type="hidden" name="question-id" value="@Model["question"].GetId()">
       <button id="reply" type="submit" name="button">ReP<span class="inverse">L</span>y</button>
