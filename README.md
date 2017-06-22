@@ -1,6 +1,6 @@
 # C# and CSS Week 5 Team Week Code Review: Persona 5 Shadow Collector
 
-#### A Simulation of the Persona 5 Shadow Collector Game Mechanic. 6/20/17
+#### A Recreation of the Persona 5 Shadow Collector Game Mechanic. 6/20/17
 
 #### By **Isabella Abatgis, James Lannon, Pete Lazuran, Andrew Dalton, Epicodus**
 
@@ -11,10 +11,8 @@ This program is a recreation of the negotiation mechanic in the game Persona 5
 
 ## Example Play-Through
 
-
-
 | Behavior | Input / User Action | Output / Program Action |
-|:---------|:------|:-------|
+|:---------|:--------------------|:------------------------|
 | Displays first question for a randomly selected shadow when user clicks "Play" | "Play" |The program selects a random shadow and a random question with set answers |
 | Keeps track of the random shadow for the duration of the "negotiation phase"| No input required | Various methods of sending the random shadow's id are used to send it through the sequential pages|
 | User is prompted to answer a randomly selected question from the shadow | Click radio selection | The selected answer is stored once the user clicks the Reply button|
