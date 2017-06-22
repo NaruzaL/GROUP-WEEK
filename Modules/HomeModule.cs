@@ -133,7 +133,7 @@ namespace PersonaFive
         return View["capture.cshtml", capturedShadow];
       };
 
-      Get["/team"] = _ => View["team.cshtml"];
+      Get["/about"] = _ => View["about.cshtml"];
 
     }
   }
