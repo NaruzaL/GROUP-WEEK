@@ -223,11 +223,19 @@
 .intro
   width: 350px
   font-size: 26px
+  @media screen and (max-width: 1800px)
+    margin-top: 60px
+    font-size: 20px
+    width: 250px
+
 
 .question
   margin-bottom: 150px
   width: 350px
   margin-top: 0
+  @media screen and (max-width: 1800px)
+    font-size: 20px
+    width: 250px
 
 .radio
   float: right
@@ -391,6 +399,7 @@
     animation: flip 1.5s forwards
     @media screen and (max-width: 1840px)
       left: 30%
+
 .shadow-response
   font-size: 45px
   margin-bottom: 200px
@@ -574,7 +583,8 @@
   font-family: 'earwig'
   text-shadow: 2px 2px 0px #fe0000
   font-size: 30px
-  animation: about 1s forwards
+  transform: scale(0)
+  animation: about 1.8s 1s forwards
   a
     text-decoration: none
     color: #fe0000
@@ -599,7 +609,8 @@
   font-family: 'earwig'
   text-shadow: 2px 2px 0px #fe0000
   font-size: 30px
-  animation: about-opposite 1s forwards
+  transform: scale(0)
+  animation: about-opposite 0.5s 1s forwards
   a
     text-decoration: none
     color: #fe0000
@@ -624,7 +635,8 @@
   font-family: 'earwig'
   text-shadow: 2px 2px 0px #fe0000
   font-size: 30px
-  animation: about 1s forwards
+  transform: scale(0)
+  animation: about 1s 1s forwards
   a
     text-decoration: none
     color: #fe0000
@@ -649,7 +661,8 @@
   font-family: 'earwig'
   text-shadow: 2px 2px 0px #fe0000
   font-size: 30px
-  animation: about-opposite 1s forwards
+  transform: scale(0)
+  animation: about-opposite 1.7s 1s forwards
   a
     text-decoration: none
     color: #fe0000
@@ -670,7 +683,7 @@
   0%
     transform: rotateZ(0) scale(0)
   100%
-    transform: rotateZ(-705deg) scale(1)
+    transform: rotateZ(-735deg) scale(1)
 
 .background-pete
   width: 100%
