@@ -61,6 +61,6 @@ _If you notice any issues regarding my page or my code, please contact me at aba
 
 ### License
 
-*{This software is licensed under the GPL license}*
+*{This software is licensed under the MIT license}*
 
 Copyright (c) 2017 **_{Isabella Abatgis, James Lannon, Pete Lazuran, Andrew Dalton, Epicodus}_**
