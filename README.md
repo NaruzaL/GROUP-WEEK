@@ -8,6 +8,7 @@
 
 This program is a recreation of the negotiation mechanic in the game Persona 5
 
+Youtube Link: https://youtu.be/wdFfD9CWRW8
 
 ## Example Play-Through
 
